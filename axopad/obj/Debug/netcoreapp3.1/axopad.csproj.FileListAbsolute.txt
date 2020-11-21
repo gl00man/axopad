@@ -42,7 +42,6 @@ C:\Users\Maciek\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.runtimeconf
 C:\Users\Maciek\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.runtimeconfig.dev.json
 C:\Users\Maciek\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.dll
 C:\Users\Maciek\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.pdb
-C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csprojAssemblyReference.cache
 C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\App.g.cs
 C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad_MarkupCompile.cache
@@ -55,3 +54,4 @@ C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csproj.Core
 C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.dll
 C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.pdb
 C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.genruntimeconfig.cache
+C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csprojAssemblyReference.cache
