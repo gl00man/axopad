@@ -34,14 +34,13 @@ namespace axopad
 
         private void newFileBtn_Click(object sender, RoutedEventArgs e)
         {
-            filePath = "";
-            mainTxt.Document.Blocks.Clear();
+            ClearData();
         }
 
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
         {
             filePath = GetFilePath();
-            OpenFile(filePath);
+            OpenFile(mainTxt, filePath);
         }
 
         private void saveFileBtn_Click(object sender, RoutedEventArgs e)
@@ -59,9 +58,16 @@ namespace axopad
 
         }
 
+        private void optionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         private void helpBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            HelpWindow hw;
+            hw = new HelpWindow();
+            hw.Show();
         }
 
         /*
@@ -94,7 +100,7 @@ namespace axopad
             }
         }
 
-        private void OpenFile(string path)
+        public void OpenFile(RichTextBox rTxt ,string path)
         {
             TextRange range;
 
@@ -103,7 +109,7 @@ namespace axopad
             if (File.Exists(path))
             {
 
-                range = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
+                range = new TextRange(rTxt.Document.ContentStart, rTxt.Document.ContentEnd);
 
                 fStream = new FileStream(path, FileMode.OpenOrCreate);
                 range.Load(fStream, DataFormats.Text);
@@ -113,6 +119,12 @@ namespace axopad
             {
                 MessageBox.Show("Can't find file!");
             }
+        }
+
+        private void ClearData()
+        {
+            filePath = "";
+            mainTxt.Document.Blocks.Clear();
         }
         
         /*
@@ -151,10 +163,45 @@ namespace axopad
             }
             return System.IO.Path.GetFullPath(sfd.FileName);
         }
+        
+        /*
+         * MAIN WINDOW EVENTS & SHORTCUTS
+         */
 
-        private void optionsBtn_Click(object sender, RoutedEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.S)
+            {
+                SaveFile(true, GetToSavePath());
+            }
+            else if(Keyboard.IsKeyDown(Key.LeftCtrl))
+            {
+                if (e.Key == Key.N)
+                {
+                    ClearData();
+                }
+                else if (e.Key == Key.O)
+                {
+                    filePath = GetFilePath();
+                    OpenFile(mainTxt, filePath);
+                }
+                else if (e.Key == Key.S)
+                {
+                    SaveFile(false, filePath);
+                }
+                else if(e.Key == Key.F)
+                {
+                    //finding
+                }
+                else if(e.Key == Key.H)
+                {
+                    //options
+                }
+                else if (e.Key == Key.X)
+                {
+                    this.Close();
+                }
+            }
         }
     }
 }

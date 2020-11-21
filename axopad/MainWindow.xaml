@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner">
+        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown">
     <Grid Background="#242529">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -19,17 +19,17 @@
         <StackPanel Grid.Row="0"
                 Grid.ColumnSpan="1"
                 Orientation="Horizontal">
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="newFileBtn" Click="newFileBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="new" FontFamily="Consolas" FontSize="13"/>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="openFileBtn" Click="openFileBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="open" FontFamily="Consolas" FontSize="13"/>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click" Background="Transparent" Foreground="#42D93D" BorderBrush="Transparent" Content="save" FontFamily="Consolas" FontSize="13"/>
-            <Button Width="55" Height="35" Margin="5 5 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click" Background="Transparent" Foreground="#42D93D" BorderBrush="Transparent" Content="save as" FontFamily="Consolas" FontSize="13"/>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="findPhraseBtn" Click="findPhraseBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="find" FontFamily="Consolas" FontSize="13"/>
-            <Button Width="60" Height="35" Margin="5 5 5 5" x:Name="optionsBtn" Click="optionsBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="settings" FontFamily="Consolas" FontSize="13"/>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="helpBtn" Click="helpBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="help" FontFamily="Consolas" FontSize="13"/>
+            <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 5 5 5" x:Name="newFileBtn" Click="newFileBtn_Click" Content="new"/>
+            <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 5 5 5" x:Name="openFileBtn" Click="openFileBtn_Click" Content="open" />
+            <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 5 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click" Content="save"/>
+            <Button Style="{StaticResource CustomButton}" Width="55" Height="40" Margin="5 5 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click" Content="save as"/>
+            <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 5 5 5" x:Name="findPhraseBtn" Click="findPhraseBtn_Click" Content="find"/>
+            <Button Style="{StaticResource CustomButton}" Width="60" Height="40" Margin="5 5 5 5" x:Name="optionsBtn" Click="optionsBtn_Click" Content="settings"/>
+            <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 5 5 5" x:Name="helpBtn" Click="helpBtn_Click" Content="help"/>
         </StackPanel>
 
         <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
-            <RichTextBox  Padding="5" AcceptsTab="True" DockPanel.Dock="Left" IsReadOnly="True" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="13">
+            <RichTextBox  Padding="5" AcceptsTab="True" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="13">
                 <RichTextBox.Resources>
                     <Style TargetType="{x:Type Paragraph}">
                         <Setter Property="Margin" Value="7"/>
