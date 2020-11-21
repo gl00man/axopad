@@ -5,8 +5,36 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0"
+                Grid.ColumnSpan="1"
+                Orientation="Horizontal">
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="newFileBtn" Click="newFileBtn_Click">New</Button>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="openFileBtn" Click="openFileBtn_Click">Open</Button>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click">Save</Button>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click">Save As</Button>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="findPhraseBtn" Click="findPhraseBtn_Click">Find</Button>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="helpBtn" Click="helpBtn_Click">Help</Button>
+        </StackPanel>
+
+        <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
+            <RichTextBox  Padding="5" AcceptsTab="True" x:Name="mainTxt" >
+                <RichTextBox.Resources>
+                    <Style TargetType="{x:Type Paragraph}">
+                        <Setter Property="Margin" Value="7"/>
+                    </Style>
+                </RichTextBox.Resources>
+            </RichTextBox>
+        </DockPanel>
     </Grid>
 </Window>

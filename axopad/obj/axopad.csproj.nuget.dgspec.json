@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj": {}
+    "C:\\Users\\ch\\Desktop\\axopad\\axopad\\axopad.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj": {
+    "C:\\Users\\ch\\Desktop\\axopad\\axopad\\axopad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj",
+        "projectUniqueName": "C:\\Users\\ch\\Desktop\\axopad\\axopad\\axopad.csproj",
         "projectName": "axopad",
-        "projectPath": "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj",
-        "packagesPath": "C:\\Users\\maciek\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\obj\\",
+        "projectPath": "C:\\Users\\ch\\Desktop\\axopad\\axopad\\axopad.csproj",
+        "packagesPath": "C:\\Users\\ch\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ch\\Desktop\\axopad\\axopad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\maciek\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ch\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -60,7 +59,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
