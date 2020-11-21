@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
         Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner">
-    <Grid>
+    <Grid Background="#242529">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -19,16 +19,17 @@
         <StackPanel Grid.Row="0"
                 Grid.ColumnSpan="1"
                 Orientation="Horizontal">
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="newFileBtn" Click="newFileBtn_Click">New</Button>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="openFileBtn" Click="openFileBtn_Click">Open</Button>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click">Save</Button>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click">Save As</Button>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="findPhraseBtn" Click="findPhraseBtn_Click">Find</Button>
-            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="helpBtn" Click="helpBtn_Click">Help</Button>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="newFileBtn" Click="newFileBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="new" FontFamily="Consolas"/>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="openFileBtn" Click="openFileBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="open" FontFamily="Consolas"/>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click" Background="Transparent" Foreground="#42D93D" BorderBrush="Transparent" Content="save" FontFamily="Consolas"/>
+            <Button Width="50" Height="35" Margin="5 5 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click" Background="Transparent" Foreground="#42D93D" BorderBrush="Transparent" Content="save as" FontFamily="Consolas"/>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="findPhraseBtn" Click="findPhraseBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="find" FontFamily="Consolas"/>
+            <Button Width="58" Height="35" Margin="5 5 5 5" x:Name="optionsBtn" Click="optionsBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="settings" FontFamily="Consolas"/>
+            <Button Width="35" Height="35" Margin="5 5 5 5" x:Name="helpBtn" Click="helpBtn_Click" Background="Transparent"  Foreground="#42D93D" BorderBrush="Transparent" Content="help" FontFamily="Consolas"/>
         </StackPanel>
 
         <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
-            <RichTextBox  Padding="5" AcceptsTab="True" x:Name="mainTxt" >
+            <RichTextBox  Padding="5" AcceptsTab="True" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" Foreground="#ABC8E2" FontFamily="Consolas" FontSize="15">
                 <RichTextBox.Resources>
                     <Style TargetType="{x:Type Paragraph}">
                         <Setter Property="Margin" Value="7"/>

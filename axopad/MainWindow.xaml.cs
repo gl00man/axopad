@@ -83,7 +83,6 @@ namespace axopad
             }
             else if(filePath != "" && !saveAs)
             {
-                MessageBox.Show("e");
                 TextRange range;
                 FileStream fStream;
 
@@ -151,6 +150,11 @@ namespace axopad
                 System.IO.Path.GetFileName(sfd.FileName);
             }
             return System.IO.Path.GetFullPath(sfd.FileName);
+        }
+
+        private void optionsBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

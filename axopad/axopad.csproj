@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Icon\" />
+    <None Remove="add.png" />
+    <None Remove="diskette.png" />
+    <None Remove="open.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="add.png" />
+    <Resource Include="diskette.png" />
+    <Resource Include="open.png" />
   </ItemGroup>
 
 </Project>
