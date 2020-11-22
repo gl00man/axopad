@@ -15,23 +15,23 @@
         <StackPanel Grid.Column="0">
             <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="17" FontFamily="Consolas">Find</TextBlock>
             <StackPanel>
-                <TextBlock  Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Search for:</TextBlock>
-                <TextBox Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
+                <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Search for:</TextBlock>
+                <TextBox x:Name="findPhraseTxt" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
             </StackPanel>
-            <Button Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="find all" FontSize="11"/>
+                <Button x:Name="findBtn" Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="find all" FontSize="11" Click="findBtn_Click"/>
             </StackPanel>
         <GridSplitter Grid.ColumnSpan="1" Width="2" Background="#2C2E30"></GridSplitter>
         <StackPanel Grid.Column="1">
             <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="17" FontFamily="Consolas">Replace</TextBlock>
             <StackPanel>
-                <TextBlock  Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Search for:</TextBlock>
-                <TextBox Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
+                <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Search for:</TextBlock>
+                <TextBox x:Name="findForReplaceTxt" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
             </StackPanel>
             <StackPanel>
-                <TextBlock  Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Replace for:</TextBlock>
-                <TextBox Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
+                <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Replace for:</TextBlock>
+                <TextBox x:Name="textToReplaceTxt" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
             </StackPanel>
-            <Button Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="replace" FontSize="11"/>
+            <Button x:Name="replaceBtn" Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="replace" FontSize="11" Click="replaceBtn_Click"/>
         </StackPanel>
     </Grid>
 </Window>

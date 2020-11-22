@@ -4,21 +4,36 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Assets/Icons/icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="add.png" />
+    <None Remove="Assets\Icons\exit.png" />
+    <None Remove="Assets\Icons\icon.ico" />
+    <None Remove="Assets\Icons\icon.png" />
+    <None Remove="Assets\Icons\minus.png" />
+    <None Remove="Assets\Icons\square.png" />
     <None Remove="diskette.png" />
-    <None Remove="exit.png" />
-    <None Remove="minus.png" />
     <None Remove="open.png" />
-    <None Remove="square.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="exit.png" />
-    <Resource Include="minus.png" />
-    <Resource Include="square.png" />
+    <Resource Include="Assets\Icons\exit.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\icon.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\icon.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\minus.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\square.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>

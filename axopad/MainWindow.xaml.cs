@@ -57,14 +57,12 @@ namespace axopad
 
         private void toolsBtn_Click(object sender, RoutedEventArgs e)
         {
-            ToolsWindow tw;
-            tw = new ToolsWindow();
-            tw.Show();
+            OpenToolsWindow();
         }
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void helpBtn_Click(object sender, RoutedEventArgs e)
@@ -117,7 +115,7 @@ namespace axopad
 
         private void SaveFile(bool saveAs, string path)
         {
-            if(path != null && saveAs)
+            if (path != null && saveAs)
             {
                 TextRange range;
                 FileStream fStream;
@@ -130,7 +128,7 @@ namespace axopad
                 saveFileBtn.IsEnabled = true;
                 titleBlockTxt.Text = path;
             }
-            else if(filePath != "" && !saveAs)
+            else if (filePath != "" && !saveAs)
             {
                 TextRange range;
                 FileStream fStream;
@@ -167,7 +165,7 @@ namespace axopad
                 saveFileBtn.IsEnabled = true;
                 titleBlockTxt.Text = path;
             }
-            else if(!File.Exists(path) && path != null)
+            else if (!File.Exists(path) && path != null)
             {
                 MessageBox.Show("Can't find file!");
             }
@@ -189,7 +187,7 @@ namespace axopad
                 saveFileBtn.IsEnabled = false;
             }
         }
-        
+
         /*
          * GETTING FILES PATH
          */
@@ -229,12 +227,76 @@ namespace axopad
             }
             return null;
         }
-        
+
         /*
-         * MAIN WINDOW EVENTS & SHORTCUTS
+         * SEARCH AND REPLACE
          */
 
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void OpenToolsWindow ()
+        {
+            ToolsWindow tw = new ToolsWindow();
+            tw.Owner = this;
+            tw.Show();
+        }
+
+        public void ReplaceText(string find, string replaceText)
+        {
+            string text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text;
+            text = text.Replace(find, replaceText);
+            if (text != new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text)
+            {
+                new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text = text;
+            }
+        }
+
+        public void FindText(string find)
+        {
+            FindTextInRange(find).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
+        }
+
+        private TextRange FindTextInRange(string find)
+        {
+            TextRange searchRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
+
+            int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
+            if (offset < 0)
+                return null; 
+
+            var start = GetTextPositionAtOffset(searchRange.Start, offset);
+            TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
+
+            return result;
+        }
+
+        private TextPointer GetTextPositionAtOffset(TextPointer position, int characterCount)
+        {
+            while (position != null)
+            {
+                if (position.GetPointerContext(LogicalDirection.Forward) == TextPointerContext.Text)
+                {
+                    int count = position.GetTextRunLength(LogicalDirection.Forward);
+                    if (characterCount <= count)
+                    {
+                        return position.GetPositionAtOffset(characterCount);
+                    }
+
+                    characterCount -= count;
+                }
+
+                TextPointer nextContextPosition = position.GetNextContextPosition(LogicalDirection.Forward);
+                if (nextContextPosition == null)
+                    return position;
+
+                position = nextContextPosition;
+            }
+            return position;
+        }
+
+            /*
+             * MAIN WINDOW EVENTS & SHORTCUTS
+             */
+
+            private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.S)
             {

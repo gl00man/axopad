@@ -10,18 +10,18 @@
     <Grid Background="#242529">
         <Grid x:Name="toolBarGrid" Background="#242529" VerticalAlignment="Top" MouseLeftButtonDown="toolBarGrid_MouseLeftButtonDown">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0">
-                <Image />
-                <TextBlock x:Name="titleBlockTxt" Text="Untitled.txt" Foreground="#6BA5F2" FontFamily="Consolas"/>
+                <Image Source="/Assets/Icons/icon.png" Width="20" Height="20"/>
+                <TextBlock x:Name="titleBlockTxt" Text="Untitled.txt" Foreground="#6BA5F2" FontFamily="Consolas" VerticalAlignment="Center" Margin="5 0 0 0"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="minimizeBtn" Style="{StaticResource barButton}" Width="25" Height="25" Click="minimizeBtn_Click">
-                    <Image Source="/minus.png" Width="13" Height="13"/>
+                    <Image Source="/Assets/Icons/minus.png" Width="13" Height="13"/>
                 </Button>
                 <Button x:Name="fullScreenBtn" Style="{StaticResource barButton}" Width="25" Height="25" Click="fullScreenBtn_Click">
-                    <Image Source="/square.png" Width="10" Height="10"/>
+                    <Image Source="/Assets/Icons/square.png" Width="10" Height="10"/>
                 </Button>
                 <Button x:Name="exitBtn" Style="{StaticResource exitButton}" Width="25" Height="25" Click="exitBtn_Click" >
-                    <Image Source="/exit.png" Width="12" Height="12"/>
+                    <Image Source="/Assets/Icons/exit.png" Width="12" Height="12"/>
                 </Button>
             </StackPanel>
         </Grid>
