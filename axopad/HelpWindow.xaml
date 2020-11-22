@@ -21,7 +21,7 @@
                 <Paragraph FontSize="11">CTRL + O > Open file</Paragraph>
                 <Paragraph FontSize="11">CTRL + S > Save file</Paragraph>
                 <Paragraph FontSize="11">CTRL + SHIFT + S > Save file as</Paragraph>
-                <Paragraph FontSize="11">CTRL + F > Find phrase</Paragraph>
+                <Paragraph FontSize="11">CTRL + T > Tools </Paragraph>
                 <Paragraph FontSize="11">CTFL + H > Settings</Paragraph>
                 <Paragraph FontSize="11">CTRL + X > Exit</Paragraph>
             </FlowDocument>

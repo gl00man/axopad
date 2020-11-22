@@ -128,11 +128,11 @@ namespace axopad
                 saveFileBtn.IsEnabled = true;
                 titleBlockTxt.Text = path;
             }
+
             else if (filePath != "" && !saveAs)
             {
                 TextRange range;
                 FileStream fStream;
-
                 range = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
 
                 fStream = new FileStream(path, FileMode.Create);
@@ -319,7 +319,7 @@ namespace axopad
                 }
                 else if(e.Key == Key.F)
                 {
-                    //finding
+                    OpenToolsWindow();
                 }
                 else if(e.Key == Key.H)
                 {

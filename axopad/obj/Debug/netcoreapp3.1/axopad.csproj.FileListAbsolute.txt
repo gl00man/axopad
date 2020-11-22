@@ -84,4 +84,3 @@ d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csproj.Core
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.dll
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.pdb
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.genruntimeconfig.cache
-d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csprojAssemblyReference.cache
