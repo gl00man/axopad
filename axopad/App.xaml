@@ -11,7 +11,6 @@
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Opacity" Value="100"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -24,6 +23,9 @@
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#343638"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#28292E"/>
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -69,5 +71,23 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
+        <Style x:Key="CustomTextBox" TargetType="TextBox">
+            <Setter Property="Background" Value="#2C2E30"/>
+            <Setter Property="Foreground" Value="#6BA5F2"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
     </Application.Resources>
 </Application>

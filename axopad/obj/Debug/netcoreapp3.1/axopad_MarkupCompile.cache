@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\
+d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\
 axopad
 none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
-C:\Users\Maciek\Desktop\axopad\axopad\App.xaml
-2-1647343458
+d:\Users\maciek\Desktop\axopad\axopad\App.xaml
+3-1540588288
 
-4-260333214
+5957351668
 1921654412462
-HelpWindow.xaml;MainWindow.xaml;
+HelpWindow.xaml;MainWindow.xaml;ToolsWindow.xaml;
 
 False
 

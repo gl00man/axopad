@@ -55,9 +55,11 @@ namespace axopad
             SaveFile(true, GetToSavePath());
         }
 
-        private void findPhraseBtn_Click(object sender, RoutedEventArgs e)
+        private void toolsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            ToolsWindow tw;
+            tw = new ToolsWindow();
+            tw.Show();
         }
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
@@ -125,6 +127,7 @@ namespace axopad
                 fStream = new FileStream(path, FileMode.Create);
                 range.Save(fStream, DataFormats.Text);
                 fStream.Close();
+                saveFileBtn.IsEnabled = true;
             }
             else if(filePath != "" && !saveAs)
             {
@@ -158,9 +161,9 @@ namespace axopad
                 saveFileBtn.IsEnabled = true;
                 titleBlockTxt.Text = path;
             }
-            else if(!File.Exists(path))
+            else if(!File.Exists(path) && path != null)
             {
-                MessageBox.Show("Can't find file!");
+                MessageBox.Show("Can't find file!" + path);
             }
         }
 

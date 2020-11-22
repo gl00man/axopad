@@ -1,0 +1,28 @@
+﻿<Window x:Class="axopad.ToolsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:axopad"
+        mc:Ignorable="d"
+        Title="ToolsWindow" Height="250" Width="300" ResizeMode="NoResize">
+    <Grid Background="#242529">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="15" FontFamily="Consolas">Find</TextBlock>
+            <TextBox Margin="0 10 0 0" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent"></TextBox>
+            <Button Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="find all" FontSize="11"/>
+        </StackPanel>
+        <GridSplitter Grid.ColumnSpan="1" Width="2" Background="#2C2E30"></GridSplitter>
+        <StackPanel Grid.Column="1">
+            <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="15" FontFamily="Consolas">Replace</TextBlock>
+            <TextBox Margin="0 10 0 0"></TextBox>
+            <TextBox></TextBox>
+            <Button />
+        </StackPanel>
+    </Grid>
+</Window>

@@ -40,7 +40,7 @@
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="openFileBtn" Click="openFileBtn_Click" Content="open" />
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click" Content="save"/>
                     <Button Style="{StaticResource CustomButton}" Width="57" Height="40" Margin="5 0 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click" Content="save as"/>
-                    <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="findPhraseBtn" Click="findPhraseBtn_Click" Content="find"/>
+                    <Button Style="{StaticResource CustomButton}" Width="43" Height="40" Margin="5 0 5 5" x:Name="toolsBtn" Click="toolsBtn_Click" Content="tools"/>
                     <Button Style="{StaticResource CustomButton}" Width="63" Height="40" Margin="5 0 5 5" x:Name="optionsBtn" Click="optionsBtn_Click" Content="settings"/>
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="helpBtn" Click="helpBtn_Click" Content="help"/>
                 </WrapPanel>
