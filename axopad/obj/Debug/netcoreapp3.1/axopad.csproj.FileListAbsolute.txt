@@ -80,3 +80,6 @@ d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.AssemblyInf
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.AssemblyInfo.cs
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csproj.CoreCompileInputs.cache
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.genruntimeconfig.cache
+C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\HelpWindow.g.cs
+C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\Maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\HelpWindow.baml

@@ -26,6 +26,8 @@ namespace axopad
         public MainWindow()
         {
             InitializeComponent();
+
+            saveFileBtn.IsEnabled = false;
         }
 
         /*
@@ -152,6 +154,8 @@ namespace axopad
                 fStream = new FileStream(path, FileMode.OpenOrCreate);
                 range.Load(fStream, DataFormats.Text);
                 fStream.Close();
+
+                saveFileBtn.IsEnabled = true;
                 titleBlockTxt.Text = path;
             }
             else if(!File.Exists(path))
@@ -164,6 +168,7 @@ namespace axopad
         {
             filePath = "";
             titleBlockTxt.Text = "Untitled.txt";
+            saveFileBtn.IsEnabled = false;
             mainTxt.Document.Blocks.Clear();
         }
         

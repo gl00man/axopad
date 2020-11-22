@@ -11,6 +11,7 @@
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Opacity" Value="100"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
