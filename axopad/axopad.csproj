@@ -8,8 +8,23 @@
 
   <ItemGroup>
     <None Remove="add.png" />
+    <None Remove="cancel.png" />
+    <None Remove="cancel_colored.png" />
+    <None Remove="close.png" />
     <None Remove="diskette.png" />
+    <None Remove="exit.png" />
+    <None Remove="minus.png" />
     <None Remove="open.png" />
+    <None Remove="square.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="cancel.png" />
+    <Resource Include="cancel_colored.png" />
+    <Resource Include="close.png" />
+    <Resource Include="exit.png" />
+    <Resource Include="minus.png" />
+    <Resource Include="square.png" />
   </ItemGroup>
 
 </Project>

@@ -7,7 +7,24 @@
         mc:Ignorable="d"
         Title="HelpWindow" Height="230" Width="330" ResizeMode="NoResize">
     <Grid>
-        <RichTextBox x:Name="helpTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="14">
+        <RichTextBox x:Name="helpTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="14" VerticalScrollBarVisibility="Visible">
+            <FlowDocument TextAlignment="Left">
+                <Paragraph FontSize="17" Foreground="#6BA5F2">Axopad help:</Paragraph>
+                <Paragraph FontSize="13" Foreground="#6BA5F2">Functions:</Paragraph>
+                <Paragraph FontSize="11">New > Create a new file</Paragraph>
+                <Paragraph FontSize="11">Open > Open existing file</Paragraph>
+                <Paragraph FontSize="11">Save > Save the current file</Paragraph>
+                <Paragraph FontSize="11">Save As > Save current file as new file to specyfic path</Paragraph>
+                <Paragraph FontSize="11">Settings > Set your font family and font size</Paragraph>
+                <Paragraph FontSize="13" Foreground="#6BA5F2">Shortcuts:</Paragraph>
+                <Paragraph FontSize="11">CTRL + N > New file</Paragraph>
+                <Paragraph FontSize="11">CTRL + O > Open file</Paragraph>
+                <Paragraph FontSize="11">CTRL + S > Save file</Paragraph>
+                <Paragraph FontSize="11">CTRL + SHIFT + S > Save file as</Paragraph>
+                <Paragraph FontSize="11">CTRL + F > Find phrase</Paragraph>
+                <Paragraph FontSize="11">CTFL + H > Settings</Paragraph>
+                <Paragraph FontSize="11">CTRL + X > Exit</Paragraph>
+            </FlowDocument>
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
                     <Setter Property="Margin" Value="5"/>

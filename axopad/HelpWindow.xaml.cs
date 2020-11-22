@@ -12,17 +12,11 @@ using System.Windows.Shapes;
 
 namespace axopad
 {
-    /// <summary>
-    /// Logika interakcji dla klasy HelpWindow.xaml
-    /// </summary>
     public partial class HelpWindow : Window
     {
-        MainWindow mw;
         public HelpWindow()
         {
             InitializeComponent();
-            mw = new MainWindow();
-            mw.OpenFile(helpTxt, @"../../../help.txt");
         }
     }
 }

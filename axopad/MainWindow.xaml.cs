@@ -40,7 +40,7 @@ namespace axopad
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
         {
             filePath = GetFilePath();
-            OpenFile(mainTxt, filePath);
+            OpenFile(filePath);
         }
 
         private void saveFileBtn_Click(object sender, RoutedEventArgs e)
@@ -71,6 +71,43 @@ namespace axopad
         }
 
         /*
+         * TOOLBAR EVENTS
+         */
+
+
+        private void exitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void fullScreenBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState != WindowState.Maximized)
+            {
+                WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                WindowState = WindowState.Normal;
+            }
+        }
+
+        private void minimizeBtn_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void toolBarGrid_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                this.DragMove();
+            }
+            catch
+            { }
+        }
+
+        /*
          * SAVING AND READING DATA
          */
 
@@ -98,9 +135,10 @@ namespace axopad
                 range.Save(fStream, DataFormats.Text);
                 fStream.Close();
             }
+            titleBlockTxt.Text = path;
         }
 
-        public void OpenFile(RichTextBox rTxt ,string path)
+        private void OpenFile(string path)
         {
             TextRange range;
 
@@ -109,13 +147,14 @@ namespace axopad
             if (File.Exists(path))
             {
 
-                range = new TextRange(rTxt.Document.ContentStart, rTxt.Document.ContentEnd);
+                range = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
 
                 fStream = new FileStream(path, FileMode.OpenOrCreate);
                 range.Load(fStream, DataFormats.Text);
                 fStream.Close();
+                titleBlockTxt.Text = path;
             }
-            else
+            else if(!File.Exists(path))
             {
                 MessageBox.Show("Can't find file!");
             }
@@ -124,6 +163,7 @@ namespace axopad
         private void ClearData()
         {
             filePath = "";
+            titleBlockTxt.Text = "Untitled.txt";
             mainTxt.Document.Blocks.Clear();
         }
         
@@ -183,7 +223,7 @@ namespace axopad
                 else if (e.Key == Key.O)
                 {
                     filePath = GetFilePath();
-                    OpenFile(mainTxt, filePath);
+                    OpenFile(filePath);
                 }
                 else if (e.Key == Key.S)
                 {
