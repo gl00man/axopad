@@ -36,7 +36,7 @@ namespace axopad
 
         private void newFileBtn_Click(object sender, RoutedEventArgs e)
         {
-            ClearData();
+            ClearData(false);
         }
 
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
@@ -117,7 +117,7 @@ namespace axopad
 
         private void SaveFile(bool saveAs, string path)
         {
-            if(saveAs)
+            if(path != null && saveAs)
             {
                 TextRange range;
                 FileStream fStream;
@@ -128,6 +128,7 @@ namespace axopad
                 range.Save(fStream, DataFormats.Text);
                 fStream.Close();
                 saveFileBtn.IsEnabled = true;
+                titleBlockTxt.Text = path;
             }
             else if(filePath != "" && !saveAs)
             {
@@ -139,8 +140,13 @@ namespace axopad
                 fStream = new FileStream(path, FileMode.Create);
                 range.Save(fStream, DataFormats.Text);
                 fStream.Close();
+                titleBlockTxt.Text = path;
             }
-            titleBlockTxt.Text = path;
+            else
+            {
+                MessageBox.Show("Can't find file!");
+                ClearData(true);
+            }
         }
 
         private void OpenFile(string path)
@@ -163,16 +169,25 @@ namespace axopad
             }
             else if(!File.Exists(path) && path != null)
             {
-                MessageBox.Show("Can't find file!" + path);
+                MessageBox.Show("Can't find file!");
             }
         }
 
-        private void ClearData()
+        private void ClearData(bool isDeleted)
         {
-            filePath = "";
-            titleBlockTxt.Text = "Untitled.txt";
-            saveFileBtn.IsEnabled = false;
-            mainTxt.Document.Blocks.Clear();
+            if (!isDeleted)
+            {
+                filePath = "";
+                titleBlockTxt.Text = "Untitled.txt";
+                saveFileBtn.IsEnabled = false;
+                mainTxt.Document.Blocks.Clear();
+            }
+            else
+            {
+                filePath = "";
+                titleBlockTxt.Text = "Untitled.txt";
+                saveFileBtn.IsEnabled = false;
+            }
         }
         
         /*
@@ -205,11 +220,14 @@ namespace axopad
             sfd.DefaultExt = "txt";
             sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
             string sfdname = sfd.FileName;
-            if (sfd.ShowDialog() == (DialogResult == true))
+            Nullable<bool> dialogOk = sfd.ShowDialog();
+
+            if (dialogOk == true)
             {
                 System.IO.Path.GetFileName(sfd.FileName);
+                return System.IO.Path.GetFullPath(sfd.FileName);
             }
-            return System.IO.Path.GetFullPath(sfd.FileName);
+            return null;
         }
         
         /*
@@ -226,7 +244,7 @@ namespace axopad
             {
                 if (e.Key == Key.N)
                 {
-                    ClearData();
+                    ClearData(false);
                 }
                 else if (e.Key == Key.O)
                 {

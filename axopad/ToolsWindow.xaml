@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="ToolsWindow" Height="250" Width="300" ResizeMode="NoResize">
+        Title="ToolsWindow" Height="190" Width="300" ResizeMode="NoResize">
     <Grid Background="#242529">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -13,16 +13,25 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0">
-            <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="15" FontFamily="Consolas">Find</TextBlock>
-            <TextBox Margin="0 10 0 0" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent"></TextBox>
+            <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="17" FontFamily="Consolas">Find</TextBlock>
+            <StackPanel>
+                <TextBlock  Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Search for:</TextBlock>
+                <TextBox Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
+            </StackPanel>
             <Button Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="find all" FontSize="11"/>
-        </StackPanel>
+            </StackPanel>
         <GridSplitter Grid.ColumnSpan="1" Width="2" Background="#2C2E30"></GridSplitter>
         <StackPanel Grid.Column="1">
-            <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="15" FontFamily="Consolas">Replace</TextBlock>
-            <TextBox Margin="0 10 0 0"></TextBox>
-            <TextBox></TextBox>
-            <Button />
+            <TextBlock Margin="10 5 0 0" Foreground="#6BA5F2" FontSize="17" FontFamily="Consolas">Replace</TextBlock>
+            <StackPanel>
+                <TextBlock  Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Search for:</TextBlock>
+                <TextBox Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
+            </StackPanel>
+            <StackPanel>
+                <TextBlock  Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="11 10 0 0">Replace for:</TextBlock>
+                <TextBox Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3"></TextBox>
+            </StackPanel>
+            <Button Style="{StaticResource CustomButton}" Margin="0 10 0 0" Width="53" Height="20" Content="replace" FontSize="11"/>
         </StackPanel>
     </Grid>
 </Window>

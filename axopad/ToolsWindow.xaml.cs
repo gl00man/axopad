@@ -12,9 +12,6 @@ using System.Windows.Shapes;
 
 namespace axopad
 {
-    /// <summary>
-    /// Logika interakcji dla klasy ToolsWindow.xaml
-    /// </summary>
     public partial class ToolsWindow : Window
     {
         public ToolsWindow()
