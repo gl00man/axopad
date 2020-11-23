@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Users\\maciek\\Desktop\\axopad\\axopad\\axopad.csproj": {}
+    "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj": {}
   },
   "projects": {
-    "d:\\Users\\maciek\\Desktop\\axopad\\axopad\\axopad.csproj": {
+    "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Users\\maciek\\Desktop\\axopad\\axopad\\axopad.csproj",
+        "projectUniqueName": "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj",
         "projectName": "axopad",
-        "projectPath": "d:\\Users\\maciek\\Desktop\\axopad\\axopad\\axopad.csproj",
+        "projectPath": "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\axopad.csproj",
         "packagesPath": "C:\\Users\\maciek\\.nuget\\packages\\",
-        "outputPath": "d:\\Users\\maciek\\Desktop\\axopad\\axopad\\obj\\",
+        "outputPath": "C:\\Users\\maciek\\source\\repos\\axopad\\axopad\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

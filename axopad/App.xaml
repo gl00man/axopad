@@ -72,5 +72,14 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="CustomRichTextBox" TargetType="RichTextBox">
+            <Style.Resources>
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Background" Value="#242529" />
+                    <Setter Property="BorderBrush" Value="#242529" />
+                </Style>              
+            </Style.Resources>
+        </Style>
+
     </Application.Resources>
 </Application>

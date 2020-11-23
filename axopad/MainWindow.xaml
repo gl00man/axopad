@@ -46,7 +46,7 @@
                 </WrapPanel>
 
                 <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
-                    <RichTextBox Padding="5" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="13">
+                    <RichTextBox Style="{StaticResource CustomRichTextBox}" Padding="5" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="13">
                         <RichTextBox.Resources>
                             <Style TargetType="{x:Type Paragraph}">
                                 <Setter Property="Margin" Value="7"/>

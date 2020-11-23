@@ -84,3 +84,8 @@ d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csproj.Core
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.dll
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.pdb
 d:\Users\maciek\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.genruntimeconfig.cache
+C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\HelpWindow.g.cs
+C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.g.cs
+C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\App.baml
+C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\HelpWindow.baml
+C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.baml
