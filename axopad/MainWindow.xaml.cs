@@ -328,7 +328,10 @@ namespace axopad
                 }
                 else if (e.Key == Key.H)
                 {
-                    //options
+                    SettingsWindow sw;
+                    sw = new SettingsWindow();
+                    sw.Owner = this;
+                    sw.Show();
                 }
                 else if (e.Key == Key.X)
                 {
@@ -363,30 +366,26 @@ namespace axopad
         private void mainTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
             textChanged = true;
-            string tokens = "(auto|int)";
-
-            string text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text;
-
-
-            Regex r = new Regex(tokens);
-            MatchCollection mc = r.Matches(text);
-            var StartCursorPosition = mainTxt.Document.ContentStart;
-
-            foreach (Match m in mc)
-            {
-                int startIndex = m.Index + 2;
-                int StopIndex = m.Index + m.Length + 2;
-
-                var textRange = new TextRange(StartCursorPosition.GetPositionAtOffset(startIndex), StartCursorPosition.GetPositionAtOffset(StopIndex));
-                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Blue));
-
-
-            }
         }
 
         private void mainTxt_Loaded(object sender, RoutedEventArgs e)
         {
             textChanged = false;
+
+            TextRange textRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
+            string text = textRange.Text;
+
+            string keywords = "(public|private|partial|static|namespace|class|using|void|foreach|in)";
+            MatchCollection keywordMatches = Regex.Matches(text, keywords);
+
+            foreach (Match m in keywordMatches)
+            {
+                int start = m.Index;
+                int end = m.Index + m.Length;
+
+                TextRange tx = new TextRange(textRange.Start.GetPositionAtOffset(start), textRange.Start.GetPositionAtOffset(end));
+                tx.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Gray));
+            }
         }
 
         /*
