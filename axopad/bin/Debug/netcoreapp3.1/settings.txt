@@ -1,0 +1,8 @@
+Consolas|14|#FFFFFF
+Consolas|14|#FFFFFF
+Consolas|14|#FFFFFF
+Consolas|14|#FFFFFF
+Consolas|14|#FFFFFF
+Consolas|14|#FFFFFF
+DejaVu Sans Mono|14|#FFFFFF
+DejaVu Sans Mono|14|#FFFFFF

@@ -1,0 +1,52 @@
+﻿<Window x:Class="axopad.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:axopad"
+        mc:Ignorable="d"
+        Title="Settings" Height="190" Width="160" ResizeMode="NoResize">
+    <Grid Background="#242529">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Left">
+            <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font:</TextBlock>
+            <ComboBox Style="{StaticResource CustomComboBox}" x:Name="changeFontCmb" Width="130" Height="20" FontFamily="Consolas" FontSize="11" Padding="3" Margin="5 0 0 0" SelectionChanged="ComboBoxes_SelectionChanged">
+                <ComboBoxItem>Consolas</ComboBoxItem>
+                <ComboBoxItem>DejaVu Sans Mono</ComboBoxItem>
+                <ComboBoxItem>Source Code Pro</ComboBoxItem>
+                <ComboBoxItem>Fixedsys</ComboBoxItem>
+                <ComboBoxItem>Lucida Console</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+            <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font size:</TextBlock>
+            <ComboBox Style="{StaticResource CustomComboBox}" x:Name="fontSizeCmb" Width="130" Height="20" FontFamily="Consolas" FontSize="11" Padding="3" Margin="5 0 0 0" SelectionChanged="ComboBoxes_SelectionChanged">
+                <ComboBoxItem>8</ComboBoxItem>
+                <ComboBoxItem>9</ComboBoxItem>
+                <ComboBoxItem>10</ComboBoxItem>
+                <ComboBoxItem>11</ComboBoxItem>
+                <ComboBoxItem>12</ComboBoxItem>
+                <ComboBoxItem>13</ComboBoxItem>
+                <ComboBoxItem>14</ComboBoxItem>
+                <ComboBoxItem>16</ComboBoxItem>
+                <ComboBoxItem>18</ComboBoxItem>
+                <ComboBoxItem>20</ComboBoxItem>
+                <ComboBoxItem>22</ComboBoxItem>
+                <ComboBoxItem>24</ComboBoxItem>
+                <ComboBoxItem>26</ComboBoxItem>
+                <ComboBoxItem>28</ComboBoxItem>
+                <ComboBoxItem>36</ComboBoxItem>
+                <ComboBoxItem>48</ComboBoxItem>
+                <ComboBoxItem>72</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left">
+            <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font color:</TextBlock>
+            <TextBox x:Name="fontColorTxt" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3" Margin="5 0 0 0" TextChanged="fontColorTxt_TextChanged"></TextBox>
+        </StackPanel>
+    </Grid>
+</Window>

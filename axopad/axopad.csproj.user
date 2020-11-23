@@ -10,6 +10,9 @@
     <Compile Update="HelpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="SettingsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="ToolsWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="SettingsWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="ToolsWindow.xaml">

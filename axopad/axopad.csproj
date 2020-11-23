@@ -14,8 +14,18 @@
     <None Remove="Assets\Icons\icon.png" />
     <None Remove="Assets\Icons\minus.png" />
     <None Remove="Assets\Icons\square.png" />
+    <None Remove="Assets\settings.txt" />
     <None Remove="diskette.png" />
     <None Remove="open.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
+      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +42,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\square.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="settings.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

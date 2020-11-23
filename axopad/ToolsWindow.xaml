@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="ToolsWindow" Height="190" Width="300" ResizeMode="NoResize">
+        Title="Tools" Height="190" Width="300" ResizeMode="NoResize">
     <Grid Background="#242529">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />

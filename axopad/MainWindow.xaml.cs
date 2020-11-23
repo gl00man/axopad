@@ -1,34 +1,27 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace axopad
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
+        string resetColorPhrase = "";
         string filePath = "";
         bool textChanged = false;
+
         public MainWindow()
         {
             InitializeComponent();
 
             saveFileBtn.IsEnabled = false;
+            ChangeProperties();
         }
 
         /*
@@ -66,7 +59,10 @@ namespace axopad
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            SettingsWindow sw;
+            sw = new SettingsWindow();
+            sw.Owner = this;
+            sw.Show();
         }
 
         private void helpBtn_Click(object sender, RoutedEventArgs e)
@@ -144,7 +140,7 @@ namespace axopad
                 fStream.Close();
                 titleBlockTxt.Text = path;
             }
-            else if(saveAs && filePath == "")
+            else if (saveAs && filePath == "")
             { }
             else
             {
@@ -238,7 +234,7 @@ namespace axopad
          * SEARCH AND REPLACE
          */
 
-        private void OpenToolsWindow ()
+        private void OpenToolsWindow()
         {
             ToolsWindow tw = new ToolsWindow();
             tw.Owner = this;
@@ -258,6 +254,7 @@ namespace axopad
         public void FindText(string find)
         {
             FindTextInRange(find).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
+            resetColorPhrase = find;
         }
 
         private TextRange FindTextInRange(string find)
@@ -266,7 +263,7 @@ namespace axopad
 
             int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
             if (offset < 0)
-                return null; 
+                return null;
 
             var start = GetTextPositionAtOffset(searchRange.Start, offset);
             TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
@@ -298,17 +295,17 @@ namespace axopad
             return position;
         }
 
-            /*
-             * MAIN WINDOW EVENTS & SHORTCUTS
-             */
+        /*
+         * MAIN WINDOW EVENTS & SHORTCUTS
+         */
 
-            private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.S)
             {
                 SaveFile(true, GetToSavePath());
             }
-            else if(Keyboard.IsKeyDown(Key.LeftCtrl))
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
                 if (e.Key == Key.N)
                 {
@@ -323,11 +320,11 @@ namespace axopad
                 {
                     SaveFile(false, filePath);
                 }
-                else if(e.Key == Key.T)
+                else if (e.Key == Key.T)
                 {
                     OpenToolsWindow();
                 }
-                else if(e.Key == Key.H)
+                else if (e.Key == Key.H)
                 {
                     //options
                 }
@@ -340,12 +337,19 @@ namespace axopad
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if(textChanged)
+            if (textChanged)
             {
-                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?","" ,MessageBoxButton.YesNo);
-                if(choice == MessageBoxResult.Yes)
+                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?", "", MessageBoxButton.YesNo);
+                if (choice == MessageBoxResult.Yes)
                 {
-                    SaveFile(false, filePath);
+                    if (filePath != null)
+                    {
+                        SaveFile(true, GetToSavePath());
+                    }
+                    else
+                    {
+                        SaveFile(false, filePath);
+                    }
                 }
             }
         }
@@ -357,6 +361,37 @@ namespace axopad
         private void mainTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
             textChanged = true;
+            FindTextInRange(resetColorPhrase).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.White));
+        }
+
+        /*
+         * READING SETTINGS AND USING IT
+         */
+
+        private String[] ReadSettingsFromTxt()
+        {
+            using (StreamReader sr = new StreamReader("settings.txt", true))
+            {
+                string line;
+                String[] parameters = { };
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    parameters = line.Split('|');
+                }
+                return parameters;
+            }
+        }
+
+        public void ChangeProperties()
+        {
+            String[] parameters = ReadSettingsFromTxt();
+
+            TextSelection text = mainTxt.Selection;
+            mainTxt.Focus();
+            text.ApplyPropertyValue(RichTextBox.FontFamilyProperty, parameters[0]);
+            text.ApplyPropertyValue(RichTextBox.FontSizeProperty, parameters[1]);
+            mainTxt.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString(parameters[2]));
         }
     }
 }

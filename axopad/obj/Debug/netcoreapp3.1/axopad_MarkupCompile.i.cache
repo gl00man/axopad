@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\ch\Desktop\axopad\axopad\App.xaml
-3-1540588288
+4953307073
 
-7119178167
+8-508298702
 1921654412462
-HelpWindow.xaml;MainWindow.xaml;ToolsWindow.xaml;
+HelpWindow.xaml;MainWindow.xaml;SettingsWindow.xaml;ToolsWindow.xaml;
 
-True
+False
 
