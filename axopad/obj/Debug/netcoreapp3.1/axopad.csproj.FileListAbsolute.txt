@@ -89,3 +89,5 @@ C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.g
 C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\App.baml
 C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\HelpWindow.baml
 C:\Users\maciek\source\repos\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.baml
+C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.g.cs
+C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.baml

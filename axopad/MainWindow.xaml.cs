@@ -23,6 +23,7 @@ namespace axopad
     public partial class MainWindow : Window
     {
         string filePath = "";
+        bool textChanged = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -43,16 +44,19 @@ namespace axopad
         {
             filePath = GetFilePath();
             OpenFile(filePath);
+            textChanged = false;
         }
 
         private void saveFileBtn_Click(object sender, RoutedEventArgs e)
         {
             SaveFile(false, filePath);
+            textChanged = false;
         }
 
         private void saveAsBtn_Click(object sender, RoutedEventArgs e)
         {
             SaveFile(true, GetToSavePath());
+            textChanged = false;
         }
 
         private void toolsBtn_Click(object sender, RoutedEventArgs e)
@@ -127,8 +131,8 @@ namespace axopad
                 fStream.Close();
                 saveFileBtn.IsEnabled = true;
                 titleBlockTxt.Text = path;
+                filePath = path;
             }
-
             else if (filePath != "" && !saveAs)
             {
                 TextRange range;
@@ -140,6 +144,8 @@ namespace axopad
                 fStream.Close();
                 titleBlockTxt.Text = path;
             }
+            else if(saveAs && filePath == "")
+            { }
             else
             {
                 MessageBox.Show("Can't find file!");
@@ -317,7 +323,7 @@ namespace axopad
                 {
                     SaveFile(false, filePath);
                 }
-                else if(e.Key == Key.F)
+                else if(e.Key == Key.T)
                 {
                     OpenToolsWindow();
                 }
@@ -330,6 +336,27 @@ namespace axopad
                     this.Close();
                 }
             }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(textChanged)
+            {
+                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?","" ,MessageBoxButton.YesNo);
+                if(choice == MessageBoxResult.Yes)
+                {
+                    SaveFile(false, filePath);
+                }
+            }
+        }
+
+        /*
+         * RICHTEXTBOX EVENTS
+         */
+
+        private void mainTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            textChanged = true;
         }
     }
 }
