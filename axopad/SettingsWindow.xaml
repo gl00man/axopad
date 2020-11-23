@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="Settings" Height="190" Width="160" ResizeMode="NoResize">
+        Title="Settings" Height="210" Width="160" ResizeMode="NoResize" Closing="Window_Closing">
     <Grid Background="#242529">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition />
             <RowDefinition />
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0" HorizontalAlignment="Left">
             <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font:</TextBlock>
-            <ComboBox Style="{StaticResource CustomComboBox}" x:Name="changeFontCmb" Width="130" Height="20" FontFamily="Consolas" FontSize="11" Padding="3" Margin="5 0 0 0" SelectionChanged="ComboBoxes_SelectionChanged">
-                <ComboBoxItem>Consolas</ComboBoxItem>
-                <ComboBoxItem>DejaVu Sans Mono</ComboBoxItem>
-                <ComboBoxItem>Source Code Pro</ComboBoxItem>
-                <ComboBoxItem>Fixedsys</ComboBoxItem>
-                <ComboBoxItem>Lucida Console</ComboBoxItem>
+            <ComboBox x:Name="changeFontCmb" Width="130" Height="20" FontFamily="Consolas" FontSize="11" Padding="3" Margin="5 0 0 0" SelectionChanged="ComboBoxes_SelectionChanged">
+                <ComboBoxItem FontFamily="Consolas">Consolas</ComboBoxItem>
+                <ComboBoxItem FontFamily="DejaVu Sans Mono">DejaVu Sans Mono</ComboBoxItem>
+                <ComboBoxItem FontFamily="Source Code Pro">Source Code Pro</ComboBoxItem>
+                <ComboBoxItem FontFamily="Fixedsys">Fixedsys</ComboBoxItem>
+                <ComboBoxItem FontFamily="Lucida Console">Lucida Console</ComboBoxItem>
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Left">
             <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font size:</TextBlock>
-            <ComboBox Style="{StaticResource CustomComboBox}" x:Name="fontSizeCmb" Width="130" Height="20" FontFamily="Consolas" FontSize="11" Padding="3" Margin="5 0 0 0" SelectionChanged="ComboBoxes_SelectionChanged">
+            <ComboBox x:Name="fontSizeCmb" Width="130" Height="20" FontFamily="Consolas" FontSize="11" Padding="3" Margin="5 0 0 0" SelectionChanged="ComboBoxes_SelectionChanged">
                 <ComboBoxItem>8</ComboBoxItem>
                 <ComboBoxItem>9</ComboBoxItem>
                 <ComboBoxItem>10</ComboBoxItem>
@@ -45,8 +46,9 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Grid.Row="2" HorizontalAlignment="Left">
-            <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font color:</TextBlock>
+            <TextBlock Foreground="#6BA5F2" FontSize="12" FontFamily="Consolas" Margin="5 10 0 0">Font color(hex):</TextBlock>
             <TextBox x:Name="fontColorTxt" Width="130" Height="20" Background="#2C2E30" Foreground="#6BA5F2" FontFamily="Consolas" FontSize="11" BorderBrush="Transparent" Padding="3" Margin="5 0 0 0" TextChanged="fontColorTxt_TextChanged"></TextBox>
         </StackPanel>
+        <Button Style="{StaticResource CustomButton}" x:Name="saveSettingsBtn" Width="40" Height="20" Margin="0 5 0 10" Content="Save" Grid.Row="3" Click="saveSettingsBtn_Click"/>
     </Grid>
 </Window>

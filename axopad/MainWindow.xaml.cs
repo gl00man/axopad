@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -14,13 +15,14 @@ namespace axopad
     {
         string resetColorPhrase = "";
         string filePath = "";
-        bool textChanged = false;
+        bool textChanged;
 
         public MainWindow()
         {
             InitializeComponent();
 
             saveFileBtn.IsEnabled = false;
+            textChanged = false;
             ChangeProperties();
         }
 
@@ -361,7 +363,30 @@ namespace axopad
         private void mainTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
             textChanged = true;
-            FindTextInRange(resetColorPhrase).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.White));
+            string tokens = "(auto|int)";
+
+            string text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text;
+
+
+            Regex r = new Regex(tokens);
+            MatchCollection mc = r.Matches(text);
+            var StartCursorPosition = mainTxt.Document.ContentStart;
+
+            foreach (Match m in mc)
+            {
+                int startIndex = m.Index + 2;
+                int StopIndex = m.Index + m.Length + 2;
+
+                var textRange = new TextRange(StartCursorPosition.GetPositionAtOffset(startIndex), StartCursorPosition.GetPositionAtOffset(StopIndex));
+                textRange.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Blue));
+
+
+            }
+        }
+
+        private void mainTxt_Loaded(object sender, RoutedEventArgs e)
+        {
+            textChanged = false;
         }
 
         /*
@@ -387,7 +412,7 @@ namespace axopad
         {
             String[] parameters = ReadSettingsFromTxt();
 
-            TextSelection text = mainTxt.Selection;
+            TextRange text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
             mainTxt.Focus();
             text.ApplyPropertyValue(RichTextBox.FontFamilyProperty, parameters[0]);
             text.ApplyPropertyValue(RichTextBox.FontSizeProperty, parameters[1]);

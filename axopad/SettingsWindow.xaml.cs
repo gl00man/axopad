@@ -18,6 +18,8 @@ namespace axopad
     /// </summary>
     public partial class SettingsWindow : Window
     {
+        bool optionChanged;
+        bool saveButtonPressed;
         public SettingsWindow()
         {
             InitializeComponent();
@@ -26,33 +28,24 @@ namespace axopad
             changeFontCmb.Text = parameters[0];
             fontSizeCmb.Text = parameters[1];
             fontColorTxt.Text = parameters[2];
+            optionChanged = false;
+            saveButtonPressed = false;
         }
 
         private void ComboBoxes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(changeFontCmb.Text != "" && fontColorTxt.Text != "")
-            {
-                SaveSettingsToTxt();
-                ((MainWindow)this.Owner).ChangeProperties();
-            }
+            optionChanged = true;
         }
 
         private void fontColorTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(fontColorTxt.Text != "" && fontColorTxt.Text != " ")
-            {
-                try
-                {
-                    SaveSettingsToTxt();
-                    ((MainWindow)this.Owner).ChangeProperties();
-                }
-                catch
-                { }
-            }
+            optionChanged = true;
         }
 
         private void SaveSettingsToTxt()
         {
+            File.WriteAllText("settings.txt", String.Empty);
+
             using (StreamWriter sw = new StreamWriter("settings.txt", true))
             {
                 sw.WriteLine("{0}|{1}|{2}", changeFontCmb.Text, fontSizeCmb.Text, fontColorTxt.Text);
@@ -72,6 +65,44 @@ namespace axopad
                     parameters = line.Split('|');
                 }
                 return parameters;
+            }
+        }
+
+        private void saveSettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            saveButtonPressed = true;
+            if (changeFontCmb.Text != "" && fontColorTxt.Text != "" && fontColorTxt.Text != "" && fontColorTxt.Text != " ")
+            {
+                try
+                {
+                    SaveSettingsToTxt();
+                    ((MainWindow)this.Owner).ChangeProperties();
+                }
+                catch
+                { }
+                this.Close();
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (changeFontCmb.Text != "" && fontColorTxt.Text != "" && fontColorTxt.Text != "" && fontColorTxt.Text != " " && saveButtonPressed == false)
+            {
+                if (!optionChanged)
+                { }
+                else
+                {
+                    MessageBoxResult choice = MessageBox.Show("Apply your changes?", "", MessageBoxButton.YesNo);
+                    if (choice == MessageBoxResult.Yes)
+                    {
+                        SaveSettingsToTxt();
+                        ((MainWindow)this.Owner).ChangeProperties();
+                    }
+                    else
+                    {
+
+                    }
+                }
             }
         }
     }
