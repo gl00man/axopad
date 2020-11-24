@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:axopad"
+        xmlns:local="clr-namespace:axopad" xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Closing="Window_Closing">
+        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown" WindowStyle="None" ResizeMode="CanResizeWithGrip" AllowsTransparency="True">
 
     <Grid Background="#242529">
         <Grid x:Name="toolBarGrid" Background="#242529" VerticalAlignment="Top" MouseLeftButtonDown="toolBarGrid_MouseLeftButtonDown">
@@ -46,13 +46,13 @@
                 </WrapPanel>
 
             <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
-                <RichTextBox Style="{StaticResource CustomRichTextBox}" AcceptsTab="True" Padding="5" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" TextChanged="mainTxt_TextChanged" Loaded="mainTxt_Loaded">
-                    <RichTextBox.Resources>
+                <avalon:TextEditor Style="{StaticResource CustomRichTextBox}" Padding="5" ShowLineNumbers="True" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" TextChanged="mainTxt_TextChanged" Loaded="mainTxt_Loaded">
+                    <avalon:TextEditor.Resources>
                         <Style TargetType="{x:Type Paragraph}">
                             <Setter Property="Margin" Value="7"/>
                         </Style>
-                    </RichTextBox.Resources>
-                </RichTextBox>
+                    </avalon:TextEditor.Resources>
+                </avalon:TextEditor>
             </DockPanel>
         </Grid>
     </Grid>

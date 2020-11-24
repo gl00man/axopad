@@ -1,13 +1,12 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
-using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Xml;
+using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace axopad
 {
@@ -24,6 +23,17 @@ namespace axopad
             saveFileBtn.IsEnabled = false;
             textChanged = false;
             ChangeProperties();
+
+            using (StreamReader s = new StreamReader(@"Assets\Python-Mode.xshd"))
+            {
+                using (XmlReader reader = XmlReader.Create(s))
+                {
+                    mainTxt.SyntaxHighlighting = ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(
+                    reader,
+                    HighlightingManager.Instance);
+                }
+            }
+
         }
 
         /*
@@ -81,7 +91,29 @@ namespace axopad
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (textChanged)
+            {
+                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?", "", MessageBoxButton.YesNoCancel);
+                if (choice == MessageBoxResult.Yes)
+                {
+                    if (filePath != null)
+                    {
+                        SaveFile(true, GetToSavePath());
+                    }
+                    else
+                    {
+                        SaveFile(false, filePath);
+                    }
+                }
+                else if(choice == MessageBoxResult.Cancel)
+                {
+
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
         }
 
         private void fullScreenBtn_Click(object sender, RoutedEventArgs e)
@@ -119,31 +151,31 @@ namespace axopad
         {
             if (path != null && saveAs)
             {
-                TextRange range;
                 FileStream fStream;
 
-                range = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
-
                 fStream = new FileStream(path, FileMode.Create);
-                range.Save(fStream, DataFormats.Text);
+                mainTxt.Save(fStream);
                 fStream.Close();
-                saveFileBtn.IsEnabled = true;
+                saveFileBtn.IsEnabled = false;
                 titleBlockTxt.Text = path;
                 filePath = path;
             }
             else if (filePath != "" && !saveAs)
             {
-                TextRange range;
                 FileStream fStream;
-                range = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
 
                 fStream = new FileStream(path, FileMode.Create);
-                range.Save(fStream, DataFormats.Text);
+                mainTxt.Save(fStream);
                 fStream.Close();
+                saveFileBtn.IsEnabled = false;
                 titleBlockTxt.Text = path;
             }
-            else if (saveAs && filePath == "")
+            else if (saveAs && filePath == null)
             { }
+            else if(!saveAs && filePath == "")
+            {
+                SaveFile(true, GetToSavePath());
+            }
             else
             {
                 MessageBox.Show("Can't find file!");
@@ -152,21 +184,16 @@ namespace axopad
         }
 
         private void OpenFile(string path)
-        {
-            TextRange range;
-
+        { 
             FileStream fStream;
 
             if (File.Exists(path))
             {
-
-                range = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
-
                 fStream = new FileStream(path, FileMode.OpenOrCreate);
-                range.Load(fStream, DataFormats.Text);
+                mainTxt.Load(fStream);
                 fStream.Close();
 
-                saveFileBtn.IsEnabled = true;
+                saveFileBtn.IsEnabled = false;
                 titleBlockTxt.Text = path;
             }
             else if (!File.Exists(path) && path != null)
@@ -182,7 +209,7 @@ namespace axopad
                 filePath = "";
                 titleBlockTxt.Text = "Untitled.txt";
                 saveFileBtn.IsEnabled = false;
-                mainTxt.Document.Blocks.Clear();
+                mainTxt.Clear();
             }
             else
             {
@@ -245,33 +272,40 @@ namespace axopad
 
         public void ReplaceText(string find, string replaceText)
         {
-            string text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text;
+            //string text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text;
+            //text = text.Replace(find, replaceText);
+            //if (text != new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text)
+            //{
+            //   new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text = text;
+            //}
+
+            string text = mainTxt.Text;
             text = text.Replace(find, replaceText);
-            if (text != new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text)
+            if (text != mainTxt.Text)
             {
-                new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text = text;
+                mainTxt.Text = text;
             }
         }
 
         public void FindText(string find)
         {
-            FindTextInRange(find).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
+            //FindTextInRange(find).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
             resetColorPhrase = find;
         }
 
-        private TextRange FindTextInRange(string find)
-        {
-            TextRange searchRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
+        //private TextRange FindTextInRange(string find)
+        //{
+            //TextRange searchRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
 
-            int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
-            if (offset < 0)
-                return null;
+            //int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
+            //if (offset < 0)
+                //return null;
 
-            var start = GetTextPositionAtOffset(searchRange.Start, offset);
-            TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
+            //var start = GetTextPositionAtOffset(searchRange.Start, offset);
+            //TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
 
-            return result;
-        }
+            //return result;
+        //}
 
         private TextPointer GetTextPositionAtOffset(TextPointer position, int characterCount)
         {
@@ -340,52 +374,19 @@ namespace axopad
             }
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (textChanged)
-            {
-                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?", "", MessageBoxButton.YesNo);
-                if (choice == MessageBoxResult.Yes)
-                {
-                    if (filePath != null)
-                    {
-                        SaveFile(true, GetToSavePath());
-                    }
-                    else
-                    {
-                        SaveFile(false, filePath);
-                    }
-                }
-            }
-        }
-
         /*
-         * RICHTEXTBOX EVENTS
+         * AVALON EVENTS
          */
 
-        private void mainTxt_TextChanged(object sender, TextChangedEventArgs e)
+        private void mainTxt_TextChanged(object sender, EventArgs e)
         {
             textChanged = true;
+            saveFileBtn.IsEnabled = true;
         }
 
         private void mainTxt_Loaded(object sender, RoutedEventArgs e)
         {
             textChanged = false;
-
-            TextRange textRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
-            string text = textRange.Text;
-
-            string keywords = "(public|private|partial|static|namespace|class|using|void|foreach|in)";
-            MatchCollection keywordMatches = Regex.Matches(text, keywords);
-
-            foreach (Match m in keywordMatches)
-            {
-                int start = m.Index;
-                int end = m.Index + m.Length;
-
-                TextRange tx = new TextRange(textRange.Start.GetPositionAtOffset(start), textRange.Start.GetPositionAtOffset(end));
-                tx.ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Gray));
-            }
         }
 
         /*
@@ -394,7 +395,7 @@ namespace axopad
 
         private String[] ReadSettingsFromTxt()
         {
-            using (StreamReader sr = new StreamReader("settings.txt", true))
+            using (StreamReader sr = new StreamReader(@"Assets\settings.txt", true))
             {
                 string line;
                 String[] parameters = { };
@@ -411,10 +412,12 @@ namespace axopad
         {
             String[] parameters = ReadSettingsFromTxt();
 
-            TextRange text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
+            //TextRange text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
             mainTxt.Focus();
-            text.ApplyPropertyValue(RichTextBox.FontFamilyProperty, parameters[0]);
-            text.ApplyPropertyValue(RichTextBox.FontSizeProperty, parameters[1]);
+            //text.ApplyPropertyValue(RichTextBox.FontFamilyProperty, parameters[0]);
+            mainTxt.FontFamily = new FontFamily(parameters[0]);
+            //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, parameters[1]);
+            mainTxt.FontSize = double.Parse(parameters[1]);
             mainTxt.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString(parameters[2]));
         }
     }

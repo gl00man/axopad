@@ -1,11 +1,44 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.1": {}
+    ".NETCoreApp,Version=v3.1": {
+      "AvalonEdit/6.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll": {}
+        },
+        "runtime": {
+          "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.WindowsDesktop.App"
+        ]
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "AvalonEdit/6.0.1": {
+      "sha512": "JmRwKMDRUUkUGLQmTtIHiSgFSQH9567b2/55Wa/gQp+ZtxQN+mnl5Qt6B/Kgz56FMnnDyE/fV23r7J2SV+NP7g==",
+      "type": "package",
+      "path": "avalonedit/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "avalonedit.6.0.1.nupkg.sha512",
+        "avalonedit.nuspec",
+        "lib/net40/ICSharpCode.AvalonEdit.dll",
+        "lib/net40/ICSharpCode.AvalonEdit.xml",
+        "lib/net45/ICSharpCode.AvalonEdit.dll",
+        "lib/net45/ICSharpCode.AvalonEdit.xml",
+        "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.dll",
+        "lib/netcoreapp3.0/ICSharpCode.AvalonEdit.xml"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.1": []
+    ".NETCoreApp,Version=v3.1": [
+      "AvalonEdit >= 6.0.1"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\ch\\.nuget\\packages\\": {},
@@ -48,6 +81,12 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "dependencies": {
+          "AvalonEdit": {
+            "target": "Package",
+            "version": "[6.0.1, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
@@ -61,6 +100,9 @@
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App": {
+            "privateAssets": "none"
           },
           "Microsoft.WindowsDesktop.App.WPF": {
             "privateAssets": "none"

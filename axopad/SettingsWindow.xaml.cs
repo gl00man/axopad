@@ -46,7 +46,7 @@ namespace axopad
         {
             File.WriteAllText("settings.txt", String.Empty);
 
-            using (StreamWriter sw = new StreamWriter("settings.txt", true))
+            using (StreamWriter sw = new StreamWriter(@"Assets\settings.txt", true))
             {
                 sw.WriteLine("{0}|{1}|{2}", changeFontCmb.Text, fontSizeCmb.Text, fontColorTxt.Text);
                 sw.Close();
@@ -55,7 +55,7 @@ namespace axopad
 
         private String[] ReadSettingsFromTxt()
         {
-            using (StreamReader sr = new StreamReader("settings.txt", true))
+            using (StreamReader sr = new StreamReader(@"Assets\settings.txt", true))
             {
                 string line;
                 String[] parameters = { };
@@ -92,7 +92,7 @@ namespace axopad
                 { }
                 else
                 {
-                    MessageBoxResult choice = MessageBox.Show("Apply your changes?", "", MessageBoxButton.YesNo);
+                    MessageBoxResult choice = MessageBox.Show("Apply your changes?", "", MessageBoxButton.YesNoCancel);
                     if (choice == MessageBoxResult.Yes)
                     {
                         SaveSettingsToTxt();
@@ -100,8 +100,9 @@ namespace axopad
                     }
                     else
                     {
-
+                        this.Close();
                     }
+
                 }
             }
         }
