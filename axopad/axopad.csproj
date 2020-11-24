@@ -9,11 +9,17 @@
 
   <ItemGroup>
     <None Remove="add.png" />
+    <None Remove="Assets\CPP-Mode.xshd" />
+    <None Remove="Assets\CSharp-Mode.xshd" />
+    <None Remove="Assets\CSS-Mode.xshd" />
+    <None Remove="Assets\HTML-Mode.xshd" />
     <None Remove="Assets\Icons\exit.png" />
     <None Remove="Assets\Icons\icon.ico" />
     <None Remove="Assets\Icons\icon.png" />
     <None Remove="Assets\Icons\minus.png" />
     <None Remove="Assets\Icons\square.png" />
+    <None Remove="Assets\JavaScript-Mode.xshd" />
+    <None Remove="Assets\Json.xshd" />
     <None Remove="diskette.png" />
     <None Remove="open.png" />
     <None Remove="Python-Mode.xshd" />
@@ -48,6 +54,24 @@
     <Resource Include="Assets\Icons\square.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Assets\CPP-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\CSharp-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\CSS-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\HTML-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\JavaScript-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Json.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Python-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

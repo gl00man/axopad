@@ -14,6 +14,7 @@ namespace axopad
     {
         string resetColorPhrase = "";
         string filePath = "";
+        string extension = "";
         bool textChanged;
 
         public MainWindow()
@@ -23,17 +24,6 @@ namespace axopad
             saveFileBtn.IsEnabled = false;
             textChanged = false;
             ChangeProperties();
-
-            using (StreamReader s = new StreamReader(@"Assets\Python-Mode.xshd"))
-            {
-                using (XmlReader reader = XmlReader.Create(s))
-                {
-                    mainTxt.SyntaxHighlighting = ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(
-                    reader,
-                    HighlightingManager.Instance);
-                }
-            }
-
         }
 
         /*
@@ -49,6 +39,7 @@ namespace axopad
         {
             filePath = GetFilePath();
             OpenFile(filePath);
+            GetSyntax();
             textChanged = false;
         }
 
@@ -113,6 +104,10 @@ namespace axopad
                 {
                     this.Close();
                 }
+            }
+            else
+            {
+                this.Close();
             }
         }
 
@@ -227,8 +222,7 @@ namespace axopad
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-            fileDialog.DefaultExt = ".txt";
+            fileDialog.Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt|Python File (*.py)|*.py";
             Nullable<bool> dialogOK = fileDialog.ShowDialog();
 
             if (dialogOK == true)
@@ -238,6 +232,8 @@ namespace axopad
                 {
                     filePath += x;
                 }
+                String[] extensionArr = filePath.Split('.');
+                extension = "." + extensionArr[extensionArr.Length - 1];
                 return filePath;
             }
             return null;
@@ -246,8 +242,8 @@ namespace axopad
         private string GetToSavePath()
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.DefaultExt = "txt";
-            sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            sfd.FileName = "Untitled.txt";
+            sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*|Python File (*.py)|*.py";
             string sfdname = sfd.FileName;
             Nullable<bool> dialogOk = sfd.ShowDialog();
 
@@ -272,13 +268,6 @@ namespace axopad
 
         public void ReplaceText(string find, string replaceText)
         {
-            //string text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text;
-            //text = text.Replace(find, replaceText);
-            //if (text != new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text)
-            //{
-            //   new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd).Text = text;
-            //}
-
             string text = mainTxt.Text;
             text = text.Replace(find, replaceText);
             if (text != mainTxt.Text)
@@ -412,13 +401,53 @@ namespace axopad
         {
             String[] parameters = ReadSettingsFromTxt();
 
-            //TextRange text = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
             mainTxt.Focus();
-            //text.ApplyPropertyValue(RichTextBox.FontFamilyProperty, parameters[0]);
             mainTxt.FontFamily = new FontFamily(parameters[0]);
-            //text.ApplyPropertyValue(RichTextBox.FontSizeProperty, parameters[1]);
             mainTxt.FontSize = double.Parse(parameters[1]);
             mainTxt.Foreground = new System.Windows.Media.SolidColorBrush((Color)ColorConverter.ConvertFromString(parameters[2]));
+            mainTxt.ShowLineNumbers = bool.Parse(parameters[3]);
         }
+
+        private void GetSyntax()
+        {
+            if(filePath != "" &&  extension == ".py")
+            {
+                ReadXshd(@"Assets\Python-Mode.xshd");
+            }
+            else if(filePath != "" && extension == ".cs")
+            {
+                ReadXshd(@"Assets\CSharp-Mode.xshd");
+            }
+            else if (filePath != "" && extension == ".cpp")
+            {
+                ReadXshd(@"Assets\CPP-Mode.xshd");
+            }
+            else if (filePath != "" && extension == ".js")
+            {
+                ReadXshd(@"Assets\JavaScript-Mode.xshd");
+            }
+            else if (filePath != "" && extension == ".html")
+            {
+                ReadXshd(@"Assets\HTML-Mode.xshd");
+            }
+            else if (filePath != "" && extension == ".css")
+            {
+                ReadXshd(@"Assets\CSS-Mode.xshd");
+            }
+        }
+
+        private void ReadXshd(string xshdPath)
+        {
+            using (StreamReader s = new StreamReader(xshdPath))
+            {
+                using (XmlReader reader = XmlReader.Create(s))
+                {
+                    mainTxt.SyntaxHighlighting = ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(
+                    reader,
+                    HighlightingManager.Instance);
+                }
+            }
+        }
+
     }
 }

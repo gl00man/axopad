@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cpp-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/csharp-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/css-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/html-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/javascript-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/json.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/python-mode.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/settings.txt")]
 

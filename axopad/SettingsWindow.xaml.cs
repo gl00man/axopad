@@ -28,6 +28,14 @@ namespace axopad
             changeFontCmb.Text = parameters[0];
             fontSizeCmb.Text = parameters[1];
             fontColorTxt.Text = parameters[2];
+            if (parameters[3] == "true")
+            {
+                showLineNumsChck.IsChecked = true;
+            }
+            else
+            {
+                showLineNumsChck.IsChecked = false;
+            }
             optionChanged = false;
             saveButtonPressed = false;
         }
@@ -44,11 +52,19 @@ namespace axopad
 
         private void SaveSettingsToTxt()
         {
-            File.WriteAllText("settings.txt", String.Empty);
+            string check = "true";
+
+            File.WriteAllText(@"Assets\settings.txt", String.Empty);
+
+            if (showLineNumsChck.IsChecked == false)
+            {
+                check = "false";
+            }
+
 
             using (StreamWriter sw = new StreamWriter(@"Assets\settings.txt", true))
             {
-                sw.WriteLine("{0}|{1}|{2}", changeFontCmb.Text, fontSizeCmb.Text, fontColorTxt.Text);
+                sw.WriteLine("{0}|{1}|{2}|{3}", changeFontCmb.Text, fontSizeCmb.Text, fontColorTxt.Text, check);
                 sw.Close();
             }
         }

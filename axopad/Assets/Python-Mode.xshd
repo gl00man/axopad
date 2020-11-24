@@ -3,7 +3,7 @@
 	<Color name="Comment" foreground="Gray" exampleText="# comment" />
 	<Color name="String" foreground="#90b874" exampleText="name = 'abc'"/>
   <Color name="MethodCall" foreground="#589cd3" exampleText="def Hello()"/>
-	<Color name="NumberLiteral" foreground="DarkBlue" exampleText="3.1415f"/>
+	<Color name="NumberLiteral" foreground="#4696cb" exampleText="3.1415f"/>
 	<Color name="Keywords" fontWeight="bold" foreground="#c276d9" exampleText="if"/>
   <Color name="Numbers" foreground="#b6885e" exampleText="12"/>
 

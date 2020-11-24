@@ -98,3 +98,10 @@ C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.genruntimeconfi
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad_Content.g.cs
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\Python-Mode.xshd
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\settings.txt
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\CPP-Mode.xshd
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\CSharp-Mode.xshd
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\JavaScript-Mode.xshd
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\Json.xshd
+C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csprojAssemblyReference.cache
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\CSS-Mode.xshd
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\HTML-Mode.xshd
