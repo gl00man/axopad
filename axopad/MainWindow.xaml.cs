@@ -33,6 +33,7 @@ namespace axopad
         private void newFileBtn_Click(object sender, RoutedEventArgs e)
         {
             ClearData(false);
+            GetSyntax();
         }
 
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
@@ -410,11 +411,11 @@ namespace axopad
 
         private void GetSyntax()
         {
-            if(filePath != "" &&  extension == ".py")
+            if (filePath != "" && extension == ".py")
             {
                 ReadXshd(@"Assets\Python-Mode.xshd");
             }
-            else if(filePath != "" && extension == ".cs")
+            else if (filePath != "" && extension == ".cs")
             {
                 ReadXshd(@"Assets\CSharp-Mode.xshd");
             }
@@ -434,19 +435,28 @@ namespace axopad
             {
                 ReadXshd(@"Assets\CSS-Mode.xshd");
             }
+            else
+            {
+                ReadXshd(@"Assets\Patch-Mode.xshd");
+            }
         }
 
         private void ReadXshd(string xshdPath)
         {
-            using (StreamReader s = new StreamReader(xshdPath))
+            try
             {
-                using (XmlReader reader = XmlReader.Create(s))
+                using (StreamReader s = new StreamReader(xshdPath))
                 {
-                    mainTxt.SyntaxHighlighting = ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(
-                    reader,
-                    HighlightingManager.Instance);
+                    using (XmlReader reader = XmlReader.Create(s))
+                    {
+                        mainTxt.SyntaxHighlighting = ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader.Load(
+                        reader,
+                        HighlightingManager.Instance);
+                    }
                 }
-            }
+           }
+           catch
+           { }
         }
 
     }

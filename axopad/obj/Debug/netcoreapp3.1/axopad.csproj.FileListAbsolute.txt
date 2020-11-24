@@ -105,3 +105,4 @@ C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\Json.xshd
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csprojAssemblyReference.cache
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\CSS-Mode.xshd
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\HTML-Mode.xshd
+C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\Assets\Patch-Mode.xshd

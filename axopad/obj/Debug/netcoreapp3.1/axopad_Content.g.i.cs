@@ -16,5 +16,6 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/json.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/python-mode.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/settings.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/patch-mode.xshd")]
 
 

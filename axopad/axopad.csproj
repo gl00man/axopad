@@ -20,6 +20,7 @@
     <None Remove="Assets\Icons\square.png" />
     <None Remove="Assets\JavaScript-Mode.xshd" />
     <None Remove="Assets\Json.xshd" />
+    <None Remove="Assets\Patch-Mode.xshd" />
     <None Remove="diskette.png" />
     <None Remove="open.png" />
     <None Remove="Python-Mode.xshd" />
@@ -76,6 +77,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\settings.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Patch-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
