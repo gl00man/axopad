@@ -83,33 +83,7 @@ namespace axopad
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (textChanged)
-            {
-                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?", "", MessageBoxButton.YesNoCancel);
-                if (choice == MessageBoxResult.Yes)
-                {
-                    if (filePath != null)
-                    {
-                        SaveFile(true, GetToSavePath());
-                    }
-                    else
-                    {
-                        SaveFile(false, filePath);
-                    }
-                }
-                else if(choice == MessageBoxResult.Cancel)
-                {
-
-                }
-                else
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                this.Close();
-            }
+            CheckIfTextChangedToExit();
         }
 
         private void fullScreenBtn_Click(object sender, RoutedEventArgs e)
@@ -168,7 +142,7 @@ namespace axopad
             }
             else if (saveAs && filePath == null)
             { }
-            else if(!saveAs && filePath == "")
+            else if (!saveAs && filePath == "")
             {
                 SaveFile(true, GetToSavePath());
             }
@@ -180,7 +154,7 @@ namespace axopad
         }
 
         private void OpenFile(string path)
-        { 
+        {
             FileStream fStream;
 
             if (File.Exists(path))
@@ -285,16 +259,16 @@ namespace axopad
 
         //private TextRange FindTextInRange(string find)
         //{
-            //TextRange searchRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
+        //TextRange searchRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
 
-            //int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
-            //if (offset < 0)
-                //return null;
+        //int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
+        //if (offset < 0)
+        //return null;
 
-            //var start = GetTextPositionAtOffset(searchRange.Start, offset);
-            //TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
+        //var start = GetTextPositionAtOffset(searchRange.Start, offset);
+        //TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
 
-            //return result;
+        //return result;
         //}
 
         private TextPointer GetTextPositionAtOffset(TextPointer position, int characterCount)
@@ -330,6 +304,11 @@ namespace axopad
             if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.S)
             {
                 SaveFile(true, GetToSavePath());
+                textChanged = false;
+            }
+            else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.X)
+            {
+                CheckIfTextChangedToExit();
             }
             else if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
@@ -341,10 +320,13 @@ namespace axopad
                 {
                     filePath = GetFilePath();
                     OpenFile(filePath);
+                    GetSyntax();
+                    textChanged = false;
                 }
                 else if (e.Key == Key.S)
                 {
                     SaveFile(false, filePath);
+                    textChanged = false;
                 }
                 else if (e.Key == Key.T)
                 {
@@ -356,10 +338,6 @@ namespace axopad
                     sw = new SettingsWindow();
                     sw.Owner = this;
                     sw.Show();
-                }
-                else if (e.Key == Key.X)
-                {
-                    this.Close();
                 }
             }
         }
@@ -454,9 +432,40 @@ namespace axopad
                         HighlightingManager.Instance);
                     }
                 }
-           }
-           catch
-           { }
+            }
+            catch
+            { }
+        }
+
+        private void CheckIfTextChangedToExit()
+        {
+            if (textChanged)
+            {
+                MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?", "", MessageBoxButton.YesNoCancel);
+                if (choice == MessageBoxResult.Yes)
+                {
+                    if (filePath != null)
+                    {
+                        SaveFile(true, GetToSavePath());
+                    }
+                    else
+                    {
+                        SaveFile(false, filePath);
+                    }
+                }
+                else if (choice == MessageBoxResult.Cancel)
+                {
+
+                }
+                else
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                this.Close();
+            }
         }
 
     }

@@ -23,7 +23,7 @@
                 <Paragraph FontSize="11">CTRL + SHIFT + S > Save file as</Paragraph>
                 <Paragraph FontSize="11">CTRL + T > Tools </Paragraph>
                 <Paragraph FontSize="11">CTFL + H > Settings</Paragraph>
-                <Paragraph FontSize="11">CTRL + X > Exit</Paragraph>
+                <Paragraph FontSize="11">CTRL+ SHIFT + X > Exit</Paragraph>
             </FlowDocument>
             <RichTextBox.Resources>
                 <Style TargetType="{x:Type Paragraph}">
