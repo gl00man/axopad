@@ -7,7 +7,7 @@
     <Application.Resources>
 
         <Style x:Key="CustomButton" TargetType="Button">
-            <Setter Property="Background" Value="#2C2E30"/>
+            <Setter Property="Background" Value="#282c34"/>
             <Setter Property="Foreground" Value="#6BA5F2"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="13"/>
@@ -26,7 +26,7 @@
                     <Setter Property="Background" Value="#343638"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="#28292E"/>
+                    <Setter Property="Background" Value="#282c34"/>
                 </Trigger>
             </Style.Triggers>
         </Style>

@@ -46,7 +46,7 @@
                 </WrapPanel>
 
             <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
-                <avalon:TextEditor Style="{StaticResource CustomRichTextBox}" Padding="5" ShowLineNumbers="True" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#2C2E30" BorderThickness="0" TextChanged="mainTxt_TextChanged" Loaded="mainTxt_Loaded">
+                <avalon:TextEditor Style="{StaticResource CustomRichTextBox}" Padding="5" ShowLineNumbers="True" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#282c34" BorderThickness="0" TextChanged="mainTxt_TextChanged" Loaded="mainTxt_Loaded">
                     <avalon:TextEditor.Resources>
                         <Style TargetType="{x:Type Paragraph}">
                             <Setter Property="Margin" Value="7"/>

@@ -1,1 +1,1 @@
-Lucida Console|16|#acb0b7|true
+Consolas|13|#acb0b7|false

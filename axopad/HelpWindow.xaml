@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Help" Height="230" Width="330" ResizeMode="NoResize">
     <Grid>
-        <RichTextBox x:Name="helpTxt" Background="#2C2E30" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="14" VerticalScrollBarVisibility="Visible">
+        <RichTextBox x:Name="helpTxt" Background="#282c34" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="14" VerticalScrollBarVisibility="Visible">
             <FlowDocument TextAlignment="Left">
                 <Paragraph FontSize="17" Foreground="#6BA5F2">Axopad help:</Paragraph>
                 <Paragraph FontSize="13" Foreground="#6BA5F2">Functions:</Paragraph>
