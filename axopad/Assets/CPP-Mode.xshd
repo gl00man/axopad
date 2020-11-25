@@ -15,7 +15,7 @@
 	<Color name="Namespace" foreground="#FF008000" fontWeight="bold" />
 	<Color name="Friend" foreground="#FFA52A2A" />
 	<Color name="Modifiers" foreground="#ba6065" fontWeight="bold" />
-	<Color name="TypeKeywords" foreground="#2e8b57" />
+	<Color name="TypeKeywords" foreground="#2e8b57" fontWeight="bold" />
 	<Color name="BooleanConstants" foreground="#2e8b57" fontWeight="bold" />
 	<Color name="Keywords" foreground="#3f7ac4" fontWeight="bold" />
 	<Color name="LoopKeywords" foreground="#ba6065" fontWeight="bold" />
