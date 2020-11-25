@@ -4,7 +4,7 @@
 	<Color name="String" foreground="#90b874" exampleText="name = 'abc'"/>
   <Color name="MethodCall" foreground="#ba6065" exampleText="def Hello()"/>
 	<Color name="NumberLiteral" foreground="#676a77" exampleText="3.1415f"/>
-	<Color name="Keywords" fontWeight="bold" foreground="#9A62AD" exampleText="if"/>
+	<Color name="Keywords" fontWeight="bold" foreground="#3f7ac4" exampleText="if"/>
   <Color name="Numbers" foreground="#b6885e" exampleText="12"/>
 
 	<Property name="DocCommentMarker" value="///" />
