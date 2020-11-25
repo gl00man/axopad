@@ -11,7 +11,8 @@
 <br />
 
 ## What is Axopad?
-It's easy, nice looking notepad for programming or just taking simple notes. 
+It's easy, nice looking notepad for programming or just taking simple notes. <br />
+For this project I was using <a href="http://avalonedit.net/">Avalon Text Editor</a>.
 
 ## Requirements
 All You need to run this app is ".NET Core 3.1 Runtime" installed.
