@@ -7,23 +7,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml;
 using ICSharpCode.AvalonEdit.Highlighting;
+using System.Threading;
 
 namespace axopad
 {
     public partial class MainWindow : Window
     {
+        string[] args;
         string resetColorPhrase = "";
         string filePath = "";
         string extension = "";
         bool textChanged;
 
-        public MainWindow()
+        public MainWindow(string[] arguments)
         {
             InitializeComponent();
 
-            saveFileBtn.IsEnabled = false;
-            textChanged = false;
-            ChangeProperties();
+            args = arguments;
         }
 
         /*
@@ -41,7 +41,6 @@ namespace axopad
             CheckIfTextChangedToExit(true);
             filePath = GetFilePath();
             OpenFile(filePath);
-            GetSyntax();
             textChanged = false;
         }
 
@@ -130,6 +129,8 @@ namespace axopad
                 saveFileBtn.IsEnabled = false;
                 titleBlockTxt.Text = path;
                 filePath = path;
+                GetExtension();
+                GetSyntax();
             }
             else if (filePath != "" && !saveAs)
             {
@@ -141,7 +142,7 @@ namespace axopad
                 saveFileBtn.IsEnabled = false;
                 titleBlockTxt.Text = path;
             }
-            else if (saveAs && filePath == null)
+            else if (saveAs && path == null)
             { }
             else if (!saveAs && filePath == "")
             {
@@ -165,12 +166,15 @@ namespace axopad
                 fStream.Close();
 
                 saveFileBtn.IsEnabled = false;
+                filePath = path;
                 titleBlockTxt.Text = path;
+                GetSyntax();
             }
             else if (!File.Exists(path) && path != null)
             {
                 MessageBox.Show("Can't find file!");
             }
+
         }
 
         private void ClearData(bool isDeleted)
@@ -300,6 +304,17 @@ namespace axopad
          * MAIN WINDOW EVENTS & SHORTCUTS
          */
 
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            saveFileBtn.IsEnabled = false;
+            textChanged = false;
+            ChangeProperties();
+            if (args.Length > 0)
+            {
+                OpenFile(args[0]);
+            }
+        }
+
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.S)
@@ -322,7 +337,6 @@ namespace axopad
                     CheckIfTextChangedToExit(true);
                     filePath = GetFilePath();
                     OpenFile(filePath);
-                    GetSyntax();
                     textChanged = false;
                 }
                 else if (e.Key == Key.S)
@@ -365,7 +379,7 @@ namespace axopad
 
         private String[] ReadSettingsFromTxt()
         {
-            using (StreamReader sr = new StreamReader(@"Assets\settings.txt", true))
+            using (StreamReader sr = new StreamReader(GetSettingsPath(), true))
             {
                 string line;
                 String[] parameters = { };
@@ -425,7 +439,7 @@ namespace axopad
         {
             try
             {
-                using (StreamReader s = new StreamReader(xshdPath))
+                using (StreamReader s = new StreamReader(GetXshdPath(xshdPath)))
                 {
                     using (XmlReader reader = XmlReader.Create(s))
                     {
@@ -479,5 +493,20 @@ namespace axopad
             }
         }
 
+        private string GetSettingsPath()
+        {
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\settings.txt");
+        }
+
+        private string GetXshdPath(string pathPart)
+        {
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", pathPart);
+        }
+        
+        private void GetExtension()
+        {
+            String[] extensionArr = filePath.Split('.');
+            extension = "." + extensionArr[extensionArr.Length - 1];
+        }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad" xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown" WindowStyle="None" ResizeMode="CanResizeWithGrip"  AllowsTransparency="True">
+        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown" Loaded="Window_Loaded" WindowStyle="None" ResizeMode="CanResizeWithGrip"  AllowsTransparency="True">
 
     <Grid Background="#242529">
         <Grid x:Name="toolBarGrid" Background="#242529" VerticalAlignment="Top" MouseLeftButtonDown="toolBarGrid_MouseLeftButtonDown">

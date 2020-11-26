@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Assets/Icons/icon.ico</ApplicationIcon>
+    <StartupObject></StartupObject>
+    <Authors>gl00man</Authors>
+    <Company />
+    <Description>Notepad for programming and taking notes.</Description>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,15 +28,6 @@
     <None Remove="diskette.png" />
     <None Remove="open.png" />
     <None Remove="Python-Mode.xshd" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <COMReference Include="{215d64d2-031c-33c7-96e3-61794cd1ee61}">
-      <Guid>215d64d2-031c-33c7-96e3-61794cd1ee61</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>4</VersionMinor>
-      <WrapperTool>tlbimp</WrapperTool>
-    </COMReference>
   </ItemGroup>
 
   <ItemGroup>

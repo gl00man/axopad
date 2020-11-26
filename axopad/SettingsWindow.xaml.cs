@@ -23,21 +23,27 @@ namespace axopad
         public SettingsWindow()
         {
             InitializeComponent();
-
-            String[] parameters = ReadSettingsFromTxt();
-            changeFontCmb.Text = parameters[0];
-            fontSizeCmb.Text = parameters[1];
-            fontColorTxt.Text = parameters[2];
-            if (parameters[3] == "true")
+            try
             {
-                showLineNumsChck.IsChecked = true;
+                String[] parameters = ReadSettingsFromTxt();
+                changeFontCmb.Text = parameters[0];
+                fontSizeCmb.Text = parameters[1];
+                fontColorTxt.Text = parameters[2];
+                if (parameters[3] == "true")
+                {
+                    showLineNumsChck.IsChecked = true;
+                }
+                else
+                {
+                    showLineNumsChck.IsChecked = false;
+                }
+                optionChanged = false;
+                saveButtonPressed = false;
             }
-            else
+            catch(Exception ex)
             {
-                showLineNumsChck.IsChecked = false;
+                MessageBox.Show(ex.Message);
             }
-            optionChanged = false;
-            saveButtonPressed = false;
         }
 
         private void ComboBoxes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -54,7 +60,7 @@ namespace axopad
         {
             string check = "true";
 
-            File.WriteAllText(@"Assets\settings.txt", String.Empty);
+            File.WriteAllText(GetSettingsPath(), String.Empty);
 
             if (showLineNumsChck.IsChecked == false)
             {
@@ -62,7 +68,7 @@ namespace axopad
             }
 
 
-            using (StreamWriter sw = new StreamWriter(@"Assets\settings.txt", true))
+            using (StreamWriter sw = new StreamWriter(GetSettingsPath(), true))
             {
                 sw.WriteLine("{0}|{1}|{2}|{3}", changeFontCmb.Text, fontSizeCmb.Text, fontColorTxt.Text, check);
                 sw.Close();
@@ -71,7 +77,7 @@ namespace axopad
 
         private String[] ReadSettingsFromTxt()
         {
-            using (StreamReader sr = new StreamReader(@"Assets\settings.txt", true))
+            using (StreamReader sr = new StreamReader(GetSettingsPath(), true))
             {
                 string line;
                 String[] parameters = { };
@@ -98,6 +104,11 @@ namespace axopad
                 { }
                 this.Close();
             }
+        }
+
+        private string GetSettingsPath()
+        {
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\settings.txt");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
