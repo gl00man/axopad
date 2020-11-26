@@ -17,12 +17,10 @@ For this project I was using <a href="http://avalonedit.net/">Avalon Text Editor
 ## Requirements
 All You need to run this app is ".NET Core 3.1 Runtime" installed.
 
-Program is on MIT License so You can use and edit code as You want.
-
 ## Functions
 Axopad has all simple notepad functions like: reading & saving files, finding or replacing phrases in text, also syntax highlighting.
 ### Languages
-This is list of languages that axopad recognizes:
+This is a list of languages that axopad recognizes:
   - C#
   - C++
   - Python
