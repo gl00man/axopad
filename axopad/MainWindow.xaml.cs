@@ -39,7 +39,6 @@ namespace axopad
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
         {
             CheckIfTextChangedToExit(true);
-            filePath = GetFilePath();
             OpenFile(filePath);
             textChanged = false;
         }
@@ -168,6 +167,7 @@ namespace axopad
                 saveFileBtn.IsEnabled = false;
                 filePath = path;
                 titleBlockTxt.Text = path;
+                GetExtension();
                 GetSyntax();
             }
             else if (!File.Exists(path) && path != null)
@@ -202,7 +202,7 @@ namespace axopad
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
             fileDialog.Multiselect = false;
-            fileDialog.Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt|Python File (*.py)|*.py";
+            fileDialog.Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt|Python File (*.py)|*.py|C# Source File (*.cs)|*.cs|C++ Source File (*.cpp)|*.cpp|HTML Document (*.html)|*.html|JavaScript File (*.js)|*.js|Cascading Style Sheet (*.css)|*.css";
             Nullable<bool> dialogOK = fileDialog.ShowDialog();
 
             if (dialogOK == true)
@@ -222,8 +222,8 @@ namespace axopad
         private string GetToSavePath()
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.FileName = "Untitled.txt";
-            sfd.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*|Python File (*.py)|*.py";
+            sfd.FileName = "axofile";
+            sfd.Filter = "All files (*.*)|*.*|Text files (*.txt)|*.txt|Python File (*.py)|*.py|JavaScript File (*.js)|*.js|C# Source File (*.cs)|*.cs|C++ Source File (*.cpp)|*.cpp|HTML Document (*.html)|*.html|Cascading Style Sheet (*.css)|*.css";
             string sfdname = sfd.FileName;
             Nullable<bool> dialogOk = sfd.ShowDialog();
 
