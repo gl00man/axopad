@@ -4,7 +4,7 @@
 	<Color name="Selector" foreground="#3f7ac4" fontWeight="bold" exampleText="div p" />
 	<Color name="Class" foreground="#ba6065" exampleText="#para" /> 
   <Color name="Property" foreground="#acb0b7" exampleText="p { color: red; }" />
-	<Color name="Value" foreground="#9A62AD" exampleText="p { color: red; }" />
+	<Color name="Value" foreground="#b6885e" exampleText="p { color: red; }" />
 	<Color name="CurlyBraces" foreground="#acb0b7" exampleText="{ }" />
 	<Color name="Colon" foreground="#acb0b7" exampleText=":" />
 	<RuleSet ignoreCase="true">

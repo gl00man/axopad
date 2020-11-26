@@ -38,6 +38,7 @@ namespace axopad
 
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
         {
+            CheckIfTextChangedToExit(true);
             filePath = GetFilePath();
             OpenFile(filePath);
             GetSyntax();
@@ -83,7 +84,7 @@ namespace axopad
 
         private void exitBtn_Click(object sender, RoutedEventArgs e)
         {
-            CheckIfTextChangedToExit();
+            CheckIfTextChangedToExit(false);
         }
 
         private void fullScreenBtn_Click(object sender, RoutedEventArgs e)
@@ -308,7 +309,7 @@ namespace axopad
             }
             else if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.X)
             {
-                CheckIfTextChangedToExit();
+                CheckIfTextChangedToExit(false);
             }
             else if (Keyboard.IsKeyDown(Key.LeftCtrl))
             {
@@ -318,6 +319,7 @@ namespace axopad
                 }
                 else if (e.Key == Key.O)
                 {
+                    CheckIfTextChangedToExit(true);
                     filePath = GetFilePath();
                     OpenFile(filePath);
                     GetSyntax();
@@ -437,13 +439,18 @@ namespace axopad
             { }
         }
 
-        private void CheckIfTextChangedToExit()
+        private void CheckIfTextChangedToExit(bool isOpening)
         {
             if (textChanged)
             {
                 MessageBoxResult choice = MessageBox.Show("Do you want to save your changes?", "", MessageBoxButton.YesNoCancel);
                 if (choice == MessageBoxResult.Yes)
                 {
+                    if(isOpening)
+                    {
+                        ClearData(false);
+                    }
+
                     if (filePath != null)
                     {
                         SaveFile(true, GetToSavePath());
@@ -453,16 +460,20 @@ namespace axopad
                         SaveFile(false, filePath);
                     }
                 }
+                else if (choice == MessageBoxResult.No && !isOpening)
+                {
+                    this.Close();
+                }
                 else if (choice == MessageBoxResult.Cancel)
                 {
 
                 }
-                else
+                else if(!isOpening)
                 {
                     this.Close();
                 }
             }
-            else
+            else if(!isOpening)
             {
                 this.Close();
             }

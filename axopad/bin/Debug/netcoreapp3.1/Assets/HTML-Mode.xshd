@@ -9,15 +9,17 @@
 	<Color name="JScriptTag" foreground="#9A62AD" exampleText="&lt;script lang=&quot;JScript&quot;&gt;Response.Write(&quot;Hello World!&quot;);&lt;/script&gt;" />
 	<Color name="VBScriptTag" foreground="#9A62AD" exampleText="&lt;script lang=&quot;VBScript&quot;&gt;Response.Write(&quot;Hello World!&quot;)&lt;/script&gt;" />
 	<Color name="UnknownScriptTag" foreground="#9A62AD" exampleText="&lt;script la&gt;alert('Hello World!');&lt;/script&gt;" />
-	<Color name="HtmlTag" foreground="#9A62AD" fontWeight="bold" exampleText="&lt;html&gt;Hello World!/html&gt;" />
-	<Color name="Tags" foreground="#9A62AD" exampleText="&lt;html&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="HtmlTag" foreground="#645ec7" fontWeight="bold" exampleText="&lt;html&gt;Hello World!/html&gt;" />
+	<Color name="Tags" foreground="#3f7ac4" exampleText="&lt;html&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="Attributes" foreground="#ba6065" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="Slash" foreground="#9A62AD" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="Assignment" foreground="#90b874" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="String" foreground="#90b874" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="Slash" foreground="" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="Assignment" foreground="#ba6065" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="String" foreground="#689e42" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="EntityReference" foreground="#90b874" exampleText="&lt;html background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="Entities" foreground="#00dd3e" exampleText="&lt;html background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="UnknownAttribute" foreground="#90b874" exampleText="&lt;html foo='bar' background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="Doctype" foreground="#645ec7" exampleText="!DOCTYPE" />
+	<Color name="TagValue" foreground="Black" exampleText="text inside" />
 	<RuleSet ignoreCase="true">
 		<Span color="Comment" multiline="true">
 			<Begin>&lt;!--</Begin>
@@ -50,6 +52,10 @@
 		<Span color="HtmlTag" ruleSet="HtmlTagSet" multiline="true">
 			<Begin>&lt;</Begin>
 			<End>&gt;</End>
+		</Span>
+		<Span color="TagValue" multiline="true">
+			<Begin>&gt;</Begin>
+			<End>&lt;</End>
 		</Span>
 		<Span color="EntityReference" ruleSet="EntityReferenceSet">
 			<Begin>&amp;</Begin>
@@ -109,117 +115,121 @@
 	<RuleSet name="HtmlTagSet" ignoreCase="false">
 		<Keywords color="Slash">
 			<Word>/</Word>
+			<Word>&lt;</Word>
+			<Word>&gt;</Word>
 		</Keywords>
 		<Keywords color="Assignment">
 			<Word>=</Word>
 		</Keywords>
+		<Keywords color="Doctype">
+			<Word>!DOCTYPE html</Word>
+		</Keywords>
 		<Keywords color="Tags">
-			<Word>!DOCTYPE</Word>
-			<Word>A</Word>
+			<Word>a</Word>
 			<Word>ABBR</Word>
 			<Word>ACRONYM</Word>
-			<Word>ADDRESS</Word>
+			<Word>address</Word>
 			<Word>APPLET</Word>
 			<Word>AREA</Word>
 			<Word>B</Word>
-			<Word>BASE</Word>
+			<Word>base</Word>
 			<Word>BASEFONT</Word>
 			<Word>BGSOUND</Word>
 			<Word>BDO</Word>
 			<Word>BIG</Word>
 			<Word>BLINK</Word>
-			<Word>BLOCKQUOTE</Word>
-			<Word>BODY</Word>
-			<Word>BR</Word>
-			<Word>BUTTON</Word>
+			<Word>blockquote</Word>
+			<Word>body</Word>
+			<Word>br</Word>
+			<Word>button</Word>
 			<Word>CAPTION</Word>
-			<Word>CENTER</Word>
+			<Word>center</Word>
 			<Word>CITE</Word>
-			<Word>CODE</Word>
+			<Word>cpde</Word>
 			<Word>COL</Word>
 			<Word>COLGROUP</Word>
-			<Word>COMMENT</Word>
+			<Word>comment</Word>
 			<Word>DD</Word>
-			<Word>DEL</Word>
+			<Word>del</Word>
 			<Word>DFN</Word>
-			<Word>DIR</Word>
-			<Word>DIV</Word>
-			<Word>DL</Word>
+			<Word>dir</Word>
+			<Word>div</Word>
+			<Word>dl</Word>
 			<Word>DT</Word>
 			<Word>EM</Word>
-			<Word>EMBED</Word>
+			<Word>embed</Word>
 			<Word>FIELDSET</Word>
-			<Word>FONT</Word>
-			<Word>FORM</Word>
-			<Word>FRAME</Word>
-			<Word>FRAMESET</Word>
-			<Word>H</Word>
-			<Word>H1</Word>
-			<Word>H2</Word>
-			<Word>H3</Word>
-			<Word>H4</Word>
-			<Word>H5</Word>
-			<Word>H6</Word>
-			<Word>HEAD</Word>
+			<Word>font</Word>
+			<Word>form</Word>
+			<Word>frame</Word>
+			<Word>frameset</Word>
+			<Word>h</Word>
+			<Word>h1</Word>
+			<Word>h2</Word>
+			<Word>h3</Word>
+			<Word>h4</Word>
+			<Word>h5</Word>
+			<Word>h6</Word>
+			<Word>head</Word>
 			<Word>HR</Word>
 			<Word>HTA:APPLICATION</Word>
-			<Word>HTML</Word>
+			<Word>html</Word>
 			<Word>I</Word>
 			<Word>IFRAME</Word>
-			<Word>IMG</Word>
-			<Word>INPUT</Word>
+			<Word>img</Word>
+			<Word>input</Word>
 			<Word>INS</Word>
 			<Word>ISINDEX</Word>
 			<Word>KBD</Word>
-			<Word>LABEL</Word>
+			<Word>label</Word>
 			<Word>LEGEnd</Word>
-			<Word>LI</Word>
-			<Word>LINK</Word>
+			<Word>li</Word>
+			<Word>link</Word>
 			<Word>LISTING</Word>
-			<Word>MAP</Word>
+			<Word>map</Word>
 			<Word>MARQUEE</Word>
-			<Word>MENU</Word>
-			<Word>META</Word>
+			<Word>menu</Word>
+			<Word>meta</Word>
 			<Word>MULTICOL</Word>
 			<Word>NEXTID</Word>
 			<Word>NOBR</Word>
 			<Word>NOFRAMES</Word>
 			<Word>NOSCRIPT</Word>
-			<Word>OBJECT</Word>
-			<Word>OL</Word>
+			<Word>object</Word>
+			<Word>ol</Word>
 			<Word>OPTGROUP</Word>
-			<Word>OPTION</Word>
-			<Word>P</Word>
+			<Word>option</Word>
+			<Word>p</Word>
 			<Word>PARAM</Word>
 			<Word>PLAINTEXT</Word>
 			<Word>PRE</Word>
 			<Word>Q</Word>
 			<Word>S</Word>
 			<Word>SAMP</Word>
-			<Word>SCRIPT</Word>
-			<Word>SELECT</Word>
+			<Word>script</Word>
+			<Word>select</Word>
 			<Word>SERVER</Word>
 			<Word>SMALL</Word>
 			<Word>SOUND</Word>
 			<Word>SPACER</Word>
-			<Word>Span</Word>
-			<Word>STRONG</Word>
-			<Word>STYLE</Word>
+			<Word>span</Word>
+			<Word>strong</Word>
+			<Word>style</Word>
 			<Word>SUB</Word>
 			<Word>SUP</Word>
-			<Word>TABLE</Word>
-			<Word>TBODY</Word>
-			<Word>TD</Word>
+			<Word>table</Word>
+			<Word>tbody</Word>
+			<Word>td</Word>
 			<Word>TEXTAREA</Word>
 			<Word>TEXTFLOW</Word>
 			<Word>TFOOT</Word>
 			<Word>TH</Word>
 			<Word>THEAD</Word>
-			<Word>TITLE</Word>
+			<Word>title</Word>
 			<Word>TR</Word>
 			<Word>TT</Word>
 			<Word>U</Word>
-			<Word>VAR</Word>
+			<Word>var</Word>
 			<Word>WBR</Word>
 			<Word>XMP</Word>
 		</Keywords>
