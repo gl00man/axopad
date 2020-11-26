@@ -4,11 +4,13 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>Assets/Icons/icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\Icons\icon.ico</ApplicationIcon>
     <StartupObject></StartupObject>
     <Authors>gl00man</Authors>
     <Company />
     <Description>Notepad for programming and taking notes.</Description>
+    <PackageIcon>icon.ico</PackageIcon>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,12 +24,17 @@
     <None Remove="Assets\Icons\icon.png" />
     <None Remove="Assets\Icons\minus.png" />
     <None Remove="Assets\Icons\square.png" />
+    <None Remove="Assets\Icons\text_file_icon.ico" />
     <None Remove="Assets\JavaScript-Mode.xshd" />
     <None Remove="Assets\Json.xshd" />
     <None Remove="Assets\Patch-Mode.xshd" />
     <None Remove="diskette.png" />
     <None Remove="open.png" />
     <None Remove="Python-Mode.xshd" />
+    <None Include="Assets/Icons/icon.ico">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +55,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Icons\square.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\text_file_icon.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Content Include="Assets\CPP-Mode.xshd">
@@ -80,6 +90,25 @@
     <Content Include="Assets\Patch-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

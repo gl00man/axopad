@@ -83,7 +83,6 @@ C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.runtimeconfig.d
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.dll
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\axopad.pdb
 C:\Users\ch\Desktop\axopad\axopad\bin\Debug\netcoreapp3.1\ICSharpCode.AvalonEdit.dll
-C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csprojAssemblyReference.cache
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\HelpWindow.g.cs
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\MainWindow.g.cs
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\SettingsWindow.g.cs
@@ -98,6 +97,8 @@ C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\MainWindow.baml
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\SettingsWindow.baml
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\ToolsWindow.baml
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.g.resources
+C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.Properties.Resources.resources
+C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csproj.GenerateResource.cache
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.AssemblyInfoInputs.cache
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.AssemblyInfo.cs
 C:\Users\ch\Desktop\axopad\axopad\obj\Debug\netcoreapp3.1\axopad.csproj.CoreCompileInputs.cache
