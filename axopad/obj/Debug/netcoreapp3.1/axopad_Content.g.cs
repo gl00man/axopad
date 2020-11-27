@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/rust-mode.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cpp-mode.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/csharp-mode.xshd")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/css-mode.xshd")]

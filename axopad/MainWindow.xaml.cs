@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Xml;
 using ICSharpCode.AvalonEdit.Highlighting;
 using System.Threading;
+using System.Diagnostics;
 
 namespace axopad
 {
@@ -17,6 +18,7 @@ namespace axopad
         string resetColorPhrase = "";
         string filePath = "";
         string extension = "";
+        bool xshdLoaded = false;
         bool textChanged;
 
         public MainWindow(string[] arguments)
@@ -39,7 +41,7 @@ namespace axopad
         private void openFileBtn_Click(object sender, RoutedEventArgs e)
         {
             CheckIfTextChangedToExit(true);
-            OpenFile(filePath);
+            OpenFile(GetFilePath());
             textChanged = false;
         }
 
@@ -62,10 +64,7 @@ namespace axopad
 
         private void optionsBtn_Click(object sender, RoutedEventArgs e)
         {
-            SettingsWindow sw;
-            sw = new SettingsWindow();
-            sw.Owner = this;
-            sw.Show();
+            OpenSettingsWindow();
         }
 
         private void helpBtn_Click(object sender, RoutedEventArgs e)
@@ -174,7 +173,6 @@ namespace axopad
             {
                 MessageBox.Show("Can't find file!");
             }
-
         }
 
         private void ClearData(bool isDeleted)
@@ -244,6 +242,14 @@ namespace axopad
             ToolsWindow tw = new ToolsWindow();
             tw.Owner = this;
             tw.Show();
+        }
+
+        private void OpenSettingsWindow()
+        {
+            SettingsWindow sw;
+            sw = new SettingsWindow();
+            sw.Owner = this;
+            sw.Show();
         }
 
         public void ReplaceText(string find, string replaceText)
@@ -317,6 +323,11 @@ namespace axopad
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
+            if (xshdLoaded == true)
+            {
+                CheckForDuplicateSymbol(e);
+            }
+
             if (Keyboard.IsKeyDown(Key.LeftCtrl) && Keyboard.IsKeyDown(Key.LeftShift) && e.Key == Key.S)
             {
                 SaveFile(true, GetToSavePath());
@@ -346,14 +357,12 @@ namespace axopad
                 }
                 else if (e.Key == Key.T)
                 {
-                    OpenToolsWindow();
+                    OpenSettingsWindow();
                 }
                 else if (e.Key == Key.H)
-                {
-                    SettingsWindow sw;
-                    sw = new SettingsWindow();
-                    sw.Owner = this;
-                    sw.Show();
+                { 
+
+                    OpenToolsWindow();
                 }
             }
         }
@@ -408,30 +417,42 @@ namespace axopad
             if (filePath != "" && extension == ".py")
             {
                 ReadXshd(@"Assets\Python-Mode.xshd");
+                xshdLoaded = true;
             }
             else if (filePath != "" && extension == ".cs")
             {
                 ReadXshd(@"Assets\CSharp-Mode.xshd");
+                xshdLoaded = true;
             }
             else if (filePath != "" && extension == ".cpp")
             {
                 ReadXshd(@"Assets\CPP-Mode.xshd");
+                xshdLoaded = true;
             }
             else if (filePath != "" && extension == ".js")
             {
                 ReadXshd(@"Assets\JavaScript-Mode.xshd");
+                xshdLoaded = true;
             }
             else if (filePath != "" && extension == ".html")
             {
                 ReadXshd(@"Assets\HTML-Mode.xshd");
+                xshdLoaded = true;
             }
             else if (filePath != "" && extension == ".css")
             {
                 ReadXshd(@"Assets\CSS-Mode.xshd");
+                xshdLoaded = true;
+            }
+            else if (filePath != "" && extension == ".rs")
+            {
+                ReadXshd(@"Assets\Rust-Mode.xshd");
+                xshdLoaded = true;
             }
             else
             {
                 ReadXshd(@"Assets\Patch-Mode.xshd");
+                xshdLoaded = false;
             }
         }
 
@@ -507,6 +528,38 @@ namespace axopad
         {
             String[] extensionArr = filePath.Split('.');
             extension = "." + extensionArr[extensionArr.Length - 1];
+        }
+
+        private void CheckForDuplicateSymbol(KeyEventArgs e)
+        {
+            Debug.Write(mainTxt.CaretOffset);
+            if (Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightShift))
+            {
+                if (e.Key == Key.OemQuotes)
+                {
+                    mainTxt.Document.Insert(mainTxt.CaretOffset, "\"");
+                    try { mainTxt.CaretOffset = mainTxt.CaretOffset - 1; }
+                    catch { }
+                }
+                else if(e.Key == Key.OemOpenBrackets)
+                {
+                    mainTxt.Document.Insert(mainTxt.CaretOffset, "}");
+                    try { mainTxt.CaretOffset = mainTxt.CaretOffset - 1; }
+                    catch { }
+                }
+                else if (e.Key == Key.D9)
+                {
+                    mainTxt.Document.Insert(mainTxt.CaretOffset, ")");
+                    try { mainTxt.CaretOffset = mainTxt.CaretOffset - 1; }
+                    catch { }
+                }
+            }
+            else if (e.Key == Key.OemQuotes)
+            {
+                mainTxt.Document.Insert(mainTxt.CaretOffset, "\'");
+                try { mainTxt.CaretOffset = mainTxt.CaretOffset - 1; }
+                catch { }
+            }
         }
     }
 }

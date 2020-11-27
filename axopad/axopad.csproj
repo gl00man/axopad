@@ -28,6 +28,7 @@
     <None Remove="Assets\JavaScript-Mode.xshd" />
     <None Remove="Assets\Json.xshd" />
     <None Remove="Assets\Patch-Mode.xshd" />
+    <None Remove="Assets\Rust-Mode.xshd" />
     <None Remove="diskette.png" />
     <None Remove="open.png" />
     <None Remove="Python-Mode.xshd" />
@@ -60,6 +61,9 @@
     <Resource Include="Assets\Icons\text_file_icon.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Content Include="Assets\Rust-Mode.xshd">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\CPP-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
