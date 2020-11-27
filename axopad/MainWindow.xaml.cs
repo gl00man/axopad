@@ -7,8 +7,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Xml;
 using ICSharpCode.AvalonEdit.Highlighting;
-using System.Threading;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using ICSharpCode.AvalonEdit.Document;
 
 namespace axopad
 {
@@ -180,14 +181,15 @@ namespace axopad
             if (!isDeleted)
             {
                 filePath = "";
-                titleBlockTxt.Text = "Untitled.txt";
+                titleBlockTxt.Text = "new file";
                 saveFileBtn.IsEnabled = false;
+                xshdLoaded = false;
                 mainTxt.Clear();
             }
             else
             {
                 filePath = "";
-                titleBlockTxt.Text = "Untitled.txt";
+                titleBlockTxt.Text = "new file";
                 saveFileBtn.IsEnabled = false;
             }
         }
@@ -262,25 +264,34 @@ namespace axopad
             }
         }
 
-        public void FindText(string find)
+        public bool FindText(string find)
         {
-            //FindTextInRange(find).ApplyPropertyValue(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red));
-            resetColorPhrase = find;
+            Regex regex = GetRegex(find);
+            int start = regex.Options.HasFlag(RegexOptions.RightToLeft) ?
+            mainTxt.SelectionStart : mainTxt.SelectionStart + mainTxt.SelectionLength;
+            Match match = regex.Match(mainTxt.Text, start);
+
+            if (!match.Success)
+            {
+                if (regex.Options.HasFlag(RegexOptions.RightToLeft))
+                    match = regex.Match(mainTxt.Text, mainTxt.Text.Length);
+                else
+                    match = regex.Match(mainTxt.Text, 0);
+            }
+
+            if (match.Success)
+            {
+                mainTxt.Select(match.Index, match.Length);
+                TextLocation loc = mainTxt.Document.GetLocation(match.Index);
+                mainTxt.ScrollTo(loc.Line, loc.Column);
+            }
+            return match.Success;
         }
 
-        //private TextRange FindTextInRange(string find)
-        //{
-        //TextRange searchRange = new TextRange(mainTxt.Document.ContentStart, mainTxt.Document.ContentEnd);
-
-        //int offset = searchRange.Text.IndexOf(find, StringComparison.OrdinalIgnoreCase);
-        //if (offset < 0)
-        //return null;
-
-        //var start = GetTextPositionAtOffset(searchRange.Start, offset);
-        //TextRange result = new TextRange(start, GetTextPositionAtOffset(start, find.Length));
-
-        //return result;
-        //}
+        private Regex GetRegex(string textToFind)
+        {
+           return new Regex(textToFind);
+        }
 
         private TextPointer GetTextPositionAtOffset(TextPointer position, int characterCount)
         {

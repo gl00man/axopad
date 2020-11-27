@@ -11,8 +11,14 @@ namespace axopad
 
         private void findBtn_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)this.Owner).FindText(findPhraseTxt.Text);
-            this.Close();
+            if (!((MainWindow)this.Owner).FindText(findPhraseTxt.Text))
+            {
+                noResultTxt.Opacity = 1;
+            }
+            else
+            {
+                ((MainWindow)this.Owner).FindText(findPhraseTxt.Text);
+            }
         }
 
         private void replaceBtn_Click(object sender, RoutedEventArgs e)
