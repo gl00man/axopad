@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="Settings" Height="230" Width="160" ResizeMode="NoResize" Closing="Window_Closing">
+        Title="Settings" Height="230" Width="160" ResizeMode="NoResize" Closing="Window_Closing" WindowStartupLocation="CenterOwner">
     <Grid Background="#242529">
         <Grid.RowDefinitions>
             <RowDefinition />

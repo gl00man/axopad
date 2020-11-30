@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad"
         mc:Ignorable="d"
-        Title="Help" Height="230" Width="330" ResizeMode="NoResize">
+        Title="Help" Height="230" Width="330" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
     <Grid>
         <RichTextBox x:Name="helpTxt" Background="#282c34" BorderThickness="0" Foreground="#FFFFFF" FontFamily="Consolas" FontSize="14" VerticalScrollBarVisibility="Visible">
             <FlowDocument TextAlignment="Left">
