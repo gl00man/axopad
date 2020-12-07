@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!-- syntaxdefinition for Json by alek kowalczyk -->
-<!-- update by zuijin in 2019.12.20 -->
 <SyntaxDefinition name="Json" extensions=".json" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Bool" foreground="Blue" exampleText="true | false" />
 	<Color name="Number" foreground="Red" exampleText="3.14" />

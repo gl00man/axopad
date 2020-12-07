@@ -52,7 +52,7 @@
                             <Setter Property="Margin" Value="10 0 0 0"/>
                         </Style>
                         <Style TargetType="avalon:LineNumberMargin">
-                            <Setter Property="Margin" Value="-5 0 5 0"/>
+                            <Setter Property="Margin" Value="0 0 5 0"/>
                         </Style>
                         <Style TargetType="avalon:TextView">
                             <Setter Property="Margin" Value="10 0 5 0"/>

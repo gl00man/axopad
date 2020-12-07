@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
-<!-- syntaxdefinition for JavaScript 2.0 by Svante Lidman -->
-<!-- converted to AvalonEdit format by Siegfried Pammer in 2010 -->
 <SyntaxDefinition name="JavaScript" extensions=".js" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Digits" foreground="#b6885e" exampleText="3.14" />
 	<Color name="Comment" foreground="Gray" exampleText="// comment" />

@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
-<!-- syntaxdefinition for C/C++ 2001 by Andrea Paatz and Mike Krueger -->
-<!-- converted to AvalonEdit format by Siegfried Pammer in 2010 -->
 <SyntaxDefinition name="C++" extensions=".c;.h;.cc;.cpp;.hpp" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Comment" foreground="Gray" />
 	<Color name="Character" foreground="#3f7ac4" />
 	<Color name="String" foreground="#2e8b57" />
-  <Color name="Preprocessor" />
+  <Color name="Preprocessor" foreground="#2765b2" fontWeight="bold"/>
 	<Color name="Punctuation" />
 	<Color name="MethodName" foreground="#645ec7" fontWeight="bold" />
 	<Color name="Digits" foreground="#645ec7" />
@@ -22,6 +20,7 @@
 	<Color name="JumpKeywords" foreground="#ba6065" />
 	<Color name="ExceptionHandling" foreground="#FF008080" fontWeight="bold" />
 	<Color name="ControlFlow" foreground="#ba6065" fontWeight="bold" />
+
 	<RuleSet ignoreCase="false">
 		<Rule color="Punctuation">
 		[?,.;()\[\]{}+\-/%*&lt;&gt;^=~!&amp;]+
