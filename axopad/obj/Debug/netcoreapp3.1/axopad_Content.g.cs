@@ -8,15 +8,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/rust-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/cpp-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/csharp-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/css-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/html-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/javascript-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/json.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/python-mode.xshd")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/settings.txt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/patch-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/fonts/fsex300.ttf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/rust-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/cpp-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/csharp-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/css-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/html-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/javascript-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/json.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/python-mode.xshd")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/data/compilers.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/data/settings.txt")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/highlighting/patch-mode.xshd")]
 
 

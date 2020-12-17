@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CompilersExplorerWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="HelpWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -18,6 +21,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="CompilersExplorerWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="HelpWindow.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -2,8 +2,10 @@
 <SyntaxDefinition name="JavaScript" extensions=".js" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Digits" foreground="#b6885e" exampleText="3.14" />
 	<Color name="Comment" foreground="Gray" exampleText="// comment" />
-	<Color name="String" foreground="Green" exampleText="var text = &quot;Hello, World!&quot;;" />
+	<Color name="String" foreground="#42B63B" exampleText="var text = &quot;Hello, World!&quot;;" />
 	<Color name="Character" foreground="#2e8b57" exampleText="var char = 'a';" />
+  <Color name="MethodCall" foreground="#AD86DF" exampleText="Hello()"/>
+  <Color name="VariablesCalls" foreground="#3f7ac4" exampleText="var "/>
 	<Color name="Regex" foreground="Sienna" exampleText="/abc/m" />
 	<Color name="JavaScriptKeyWords" foreground="#3f7ac4" exampleText="return myVariable;" />
 	<Color name="JavaScriptIntrinsics" foreground="#ba6065" exampleText="Math.random()" />
@@ -68,6 +70,10 @@
 			<Word>try</Word>
 			<Word>volatile</Word>
 		</Keywords>
+    <Keywords color="VariablesCalls">
+      <Word>var</Word>
+      <Word>let</Word>
+    </Keywords>
 		<Keywords color="JavaScriptIntrinsics">
 			<Word>Array</Word>
 			<Word>Boolean</Word>
@@ -123,5 +129,10 @@
 			</RuleSet>
 		</Span>
 		<Rule color="Digits">\b0[xX][0-9a-fA-F]+|(\b\d+(\.[0-9]+)?|\.[0-9]+)([eE][+-]?[0-9]+)?</Rule>
+    <Rule color="MethodCall">
+      \b
+      [\d\w_]+  # an identifier
+      (?=\s*\() # followed by (
+    </Rule>
 	</RuleSet>
 </SyntaxDefinition>

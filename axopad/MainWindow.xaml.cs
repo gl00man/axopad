@@ -10,13 +10,17 @@ using ICSharpCode.AvalonEdit.Highlighting;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using ICSharpCode.AvalonEdit.Document;
+using Ookii.Dialogs.Wpf;
+using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace axopad
 {
     public partial class MainWindow : Window
     {
         string[] args;
-        string resetColorPhrase = "";
+        string compilerPath = "";
+        string lang = "";
         string filePath = "";
         string extension = "";
         bool xshdLoaded = false;
@@ -75,6 +79,37 @@ namespace axopad
             hw.Show();
         }
 
+        private void runBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (compilerPath != "" && compilerPath != null  && compilerPath != "null")
+            {
+                Process p = new Process();
+                p.StartInfo = new ProcessStartInfo()
+                {
+                    FileName = compilerPath,
+                    Arguments = filePath,
+                    UseShellExecute = false,
+                };
+                p.Start();
+            }
+        }
+
+        private void compilersBtn_Click(object sender, RoutedEventArgs e)
+        {
+            OpenCompilersWindow();
+        }
+
+        private void openFolderBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var folderDialog = new VistaFolderBrowserDialog();
+
+            if (folderDialog.ShowDialog() == true)
+            {
+                OpenFolder(folderDialog.SelectedPath);
+            }
+
+        }
+
         /*
          * TOOLBAR EVENTS
          */
@@ -110,6 +145,26 @@ namespace axopad
             }
             catch
             { }
+        }
+
+        /*
+         * TREEVIEW EVENTS
+         */
+
+        private void foldersTreeView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var element = foldersTreeView.SelectedItem as TreeViewItem;
+
+            try
+            {
+                if (element.IsSelected)
+                {
+                    CheckIfTextChangedToExit(true);
+                    OpenFile(element.Tag.ToString());
+                    textChanged = false;
+                }
+            }
+            catch { }
         }
 
         /*
@@ -174,6 +229,13 @@ namespace axopad
             {
                 MessageBox.Show("Can't find file!");
             }
+        }
+
+        private void OpenFolder(string path)
+        {
+            DirectoryInfo rootDirectoryInfo = new DirectoryInfo(@path);
+            foldersTreeView.Items.Clear();
+            foldersTreeView.Items.Add(CreateDirectoryNode(rootDirectoryInfo));
         }
 
         private void ClearData(bool isDeleted)
@@ -253,6 +315,14 @@ namespace axopad
             sw.Owner = this;
             sw.Show();
         }
+        
+        private void OpenCompilersWindow()
+        {
+            CompilersExplorerWindow cew;
+            cew = new CompilersExplorerWindow();
+            cew.Owner = this;
+            cew.Show();
+        }
 
         public void ReplaceText(string find, string replaceText)
         {
@@ -321,7 +391,7 @@ namespace axopad
          * MAIN WINDOW EVENTS & SHORTCUTS
          */
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             saveFileBtn.IsEnabled = false;
             textChanged = false;
@@ -358,8 +428,11 @@ namespace axopad
                 {
                     CheckIfTextChangedToExit(true);
                     filePath = GetFilePath();
-                    OpenFile(filePath);
-                    textChanged = false;
+                    if (filePath != null)
+                    {
+                        OpenFile(filePath);
+                        textChanged = false;
+                    }
                 }
                 else if (e.Key == Key.S)
                 {
@@ -386,11 +459,20 @@ namespace axopad
         {
             textChanged = true;
             saveFileBtn.IsEnabled = true;
+            lineNumTxt.Text = mainTxt.Document.GetLocation(mainTxt.CaretOffset).Line.ToString() + ',';
+            columnNumTxt.Text = mainTxt.Document.GetLocation(mainTxt.CaretOffset).Column.ToString();
+            Debug.Write(mainTxt.FontFamily);
         }
 
         private void mainTxt_Loaded(object sender, RoutedEventArgs e)
         {
             textChanged = false;
+        }
+
+        private void mainTxt_GotMouseCapture(object sender, MouseEventArgs e)
+        {
+            lineNumTxt.Text = mainTxt.Document.GetLocation(mainTxt.CaretOffset).Line.ToString() + ',';
+            columnNumTxt.Text = mainTxt.Document.GetLocation(mainTxt.CaretOffset).Column.ToString();
         }
 
         /*
@@ -427,43 +509,67 @@ namespace axopad
         {
             if (filePath != "" && extension == ".py")
             {
-                ReadXshd(@"Assets\Python-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\Python-Mode.xshd");
                 xshdLoaded = true;
+                lang = "Python";
+                langTxt.Text = lang;
+                SetCompilerPath();
             }
             else if (filePath != "" && extension == ".cs")
             {
-                ReadXshd(@"Assets\CSharp-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\CSharp-Mode.xshd");
                 xshdLoaded = true;
+                lang = "C#";
+                langTxt.Text = lang;
+                SetCompilerPath();
             }
             else if (filePath != "" && extension == ".cpp")
             {
-                ReadXshd(@"Assets\CPP-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\CPP-Mode.xshd");
                 xshdLoaded = true;
+                lang = "C++";
+                langTxt.Text = lang;
+                SetCompilerPath();
             }
             else if (filePath != "" && extension == ".js")
             {
-                ReadXshd(@"Assets\JavaScript-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\JavaScript-Mode.xshd");
                 xshdLoaded = true;
+                lang = "Java Script";
+                langTxt.Text = lang;
+                compilerPath = "";
             }
             else if (filePath != "" && extension == ".html")
             {
-                ReadXshd(@"Assets\HTML-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\HTML-Mode.xshd");
                 xshdLoaded = true;
+                lang = "HTML";
+                langTxt.Text = lang;
+                compilerPath = "";
             }
             else if (filePath != "" && extension == ".css")
             {
-                ReadXshd(@"Assets\CSS-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\CSS-Mode.xshd");
                 xshdLoaded = true;
+                lang = "CSS";
+                langTxt.Text = lang;
+                compilerPath = "";
             }
             else if (filePath != "" && extension == ".rs")
             {
-                ReadXshd(@"Assets\Rust-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\Rust-Mode.xshd");
                 xshdLoaded = true;
+                lang = "Rust";
+                langTxt.Text = lang;
+                SetCompilerPath();
             }
             else
             {
-                ReadXshd(@"Assets\Patch-Mode.xshd");
+                ReadXshd(@"Assets\Highlighting\Patch-Mode.xshd");
                 xshdLoaded = false;
+                lang = "Notes";
+                langTxt.Text = lang;
+                compilerPath = "";
             }
         }
 
@@ -527,7 +633,7 @@ namespace axopad
 
         private string GetSettingsPath()
         {
-            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\settings.txt");
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\Data\settings.txt");
         }
 
         private string GetXshdPath(string pathPart)
@@ -571,6 +677,50 @@ namespace axopad
                 try { mainTxt.CaretOffset = mainTxt.CaretOffset - 1; }
                 catch { }
             }
+        }
+        private static TreeViewItem CreateDirectoryNode(DirectoryInfo directoryInfo)
+        {
+            var directoryNode = new TreeViewItem { Header = directoryInfo.Name, Tag = directoryInfo.FullName };
+            foreach (var directory in directoryInfo.GetDirectories())
+                directoryNode.Items.Add(CreateDirectoryNode(directory));
+
+            foreach (var file in directoryInfo.GetFiles())
+                directoryNode.Items.Add(new TreeViewItem { Header = file.Name, Tag = file.FullName });
+
+            return directoryNode;
+        }
+
+        public void SetCompilerPath()
+        {
+            Dictionary<string, string> paths = new Dictionary<string, string>();
+
+            String[] data = ReadCompilers();
+            paths.Add(data[0], data[1]);
+            paths.Add(data[2], data[3]);
+            paths.Add(data[4], data[5]);
+            paths.Add(data[6], data[7]);
+
+            compilerPath = paths[lang];
+        }
+
+        private String[] ReadCompilers()
+        {
+            using (StreamReader sr = new StreamReader(GetCompilerPath(), true))
+            {
+                string line;
+                String[] parameters = { };
+
+                while ((line = sr.ReadLine()) != null)
+                {
+                    parameters = line.Split('|');
+                }
+                return parameters;
+            }
+        }
+
+        private string GetCompilerPath()
+        {
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\Data\compilers.txt");
         }
     }
 }

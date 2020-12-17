@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:axopad" xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
         mc:Ignorable="d"
-        Title="axopad" Height="400" Width="550" MinHeight="170" MinWidth="300" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown" Loaded="Window_Loaded" WindowStyle="None" ResizeMode="CanResizeWithGrip"  AllowsTransparency="True">
+        Title="axopad" Height="650" Width="910" MinHeight="170" MinWidth="350" BorderThickness="6" BorderBrush="Transparent" WindowStartupLocation="CenterOwner" KeyDown="Window_KeyDown" Loaded="Window_Loaded" WindowStyle="None" ResizeMode="CanResizeWithGrip"  AllowsTransparency="True" >
 
     <Grid Background="#242529">
         <Grid x:Name="toolBarGrid" Background="#242529" VerticalAlignment="Top" MouseLeftButtonDown="toolBarGrid_MouseLeftButtonDown">
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5 0 0 0">
                 <Image Source="/Assets/Icons/icon.png" Width="20" Height="20"/>
                 <TextBlock x:Name="titleBlockTxt" Text="Untitled.txt" Foreground="#6BA5F2" FontFamily="Consolas" VerticalAlignment="Center" Margin="5 0 0 0"/>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="minimizeBtn" Style="{StaticResource barButton}" Width="25" Height="25" Click="minimizeBtn_Click">
                     <Image Source="/Assets/Icons/minus.png" Width="13" Height="13"/>
@@ -25,40 +27,56 @@
                 </Button>
             </StackPanel>
         </Grid>
+        
         <Grid Margin="0 25 0 0">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="5*" />
-                </Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-                <WrapPanel Grid.Row="0" Grid.ColumnSpan="1" Orientation="Horizontal">
+                <WrapPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="newFileBtn" Click="newFileBtn_Click" Content="new"/>
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="openFileBtn" Click="openFileBtn_Click" Content="open" />
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="saveFileBtn" Click="saveFileBtn_Click" Content="save"/>
                     <Button Style="{StaticResource CustomButton}" Width="57" Height="40" Margin="5 0 5 5" x:Name="saveAsBtn" Click="saveAsBtn_Click" Content="save as"/>
                     <Button Style="{StaticResource CustomButton}" Width="43" Height="40" Margin="5 0 5 5" x:Name="toolsBtn" Click="toolsBtn_Click" Content="tools"/>
-                    <Button Style="{StaticResource CustomButton}" Width="63" Height="40" Margin="5 0 5 5" x:Name="optionsBtn" Click="optionsBtn_Click" Content="settings"/>
+                <Button Style="{StaticResource CustomButton}" Width="43" Height="40" Margin="5 0 5 5" x:Name="runBtn" Click="runBtn_Click" Content="run"/>
+                <Button Style="{StaticResource CustomButton}" Width="70" Height="40" Margin="5 0 5 5" x:Name="compilersBtn" Click="compilersBtn_Click" Content="compilers"/>
+                    <Button Style="{StaticResource CustomButton}" Width="63" Height="40" Margin="5 0 5 5" x:Name="optionsBtn" Click="optionsBtn_Click" Content="options"/>
                     <Button Style="{StaticResource CustomButton}" Width="40" Height="40" Margin="5 0 5 5" x:Name="helpBtn" Click="helpBtn_Click" Content="help"/>
                 </WrapPanel>
+            <DockPanel Grid.Row="1" Background="#252930">
+                <TextBlock Text="folders" HorizontalAlignment="Left" FontSize="14" FontFamily="Consolas" Background="Transparent" Foreground="#6BA5F2" Margin="10 5 0 0"/>
+                <Button x:Name="openFolderBtn" Style="{StaticResource folderExplorerButton}" HorizontalAlignment="Right" Width="20" Height="20" Margin="0 5 10 0" Click="openFolderBtn_Click">
+                    <Image Source="/Assets/Icons/folder.png" Width="20" Height="20" />
+                </Button>
+            </DockPanel>
+                <DockPanel Grid.Row="2">
+                <TreeView x:Name="foldersTreeView" Style="{StaticResource CustomTreeView}" MouseDoubleClick="foldersTreeView_MouseDoubleClick"/>
+            </DockPanel>
 
-            <DockPanel Grid.Row="1" Grid.ColumnSpan="1">
-                <avalon:TextEditor Style="{StaticResource CustomRichTextBox}" Padding="5" ShowLineNumbers="True" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#282c34" BorderThickness="0" TextChanged="mainTxt_TextChanged" Loaded="mainTxt_Loaded">
-                    <avalon:TextEditor.Resources>
-                        <Style TargetType="Line">
-                            <Setter Property="Margin" Value="10 0 0 0"/>
-                        </Style>
-                        <Style TargetType="avalon:LineNumberMargin">
-                            <Setter Property="Margin" Value="0 0 5 0"/>
-                        </Style>
-                        <Style TargetType="avalon:TextView">
-                            <Setter Property="Margin" Value="10 0 5 0"/>
-                        </Style>
-                    </avalon:TextEditor.Resources>
+            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Grid.RowSpan="2">
+                <avalon:TextEditor Style="{StaticResource CustomRichTextBox}" Padding="5" ShowLineNumbers="True" WordWrap="True" ScrollViewer.CanContentScroll="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="mainTxt" Background="#282C34" BorderThickness="0" TextChanged="mainTxt_TextChanged" Loaded="mainTxt_Loaded" GotMouseCapture="mainTxt_GotMouseCapture">
                 </avalon:TextEditor>
+            </DockPanel>
+
+            <DockPanel Grid.Row="3" Grid.ColumnSpan="2">
+                <TextBlock Text="Line:" Margin="10 5 0 5" Foreground="#6BA5F2" />
+                <TextBlock x:Name="lineNumTxt" Text="1," Margin="5 5 0 5" Foreground="#6BA5F2" />
+                <TextBlock Text="Column:" Margin="10 5 0 5" Foreground="#6BA5F2" />
+                <TextBlock x:Name="columnNumTxt" Text="1" Margin="5 5 0 5" Foreground="#6BA5F2" />
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 5 0 5">
+                    <TextBlock Text="Tab Size:" Foreground="#6BA5F2" Margin="0 0 5 0"/>
+                    <TextBlock x:Name="tabSizeTxt" Text="4" Foreground="#6BA5F2" Margin="0 0 50 0"/>
+                    <TextBlock x:Name="langTxt" Text="Notes" Foreground="#6BA5F2" Margin="0 0 30 0"/>
+                </StackPanel>
             </DockPanel>
         </Grid>
     </Grid>

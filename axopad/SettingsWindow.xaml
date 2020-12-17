@@ -20,7 +20,7 @@
                 <ComboBoxItem FontFamily="Consolas">Consolas</ComboBoxItem>
                 <ComboBoxItem FontFamily="DejaVu Sans Mono">DejaVu Sans Mono</ComboBoxItem>
                 <ComboBoxItem FontFamily="Source Code Pro">Source Code Pro</ComboBoxItem>
-                <ComboBoxItem FontFamily="Fixedsys">Fixedsys</ComboBoxItem>
+                <ComboBoxItem FontFamily="Fixedsys Excelsior 3.01">Fixedsys Excelsior 3.01</ComboBoxItem>
                 <ComboBoxItem FontFamily="Lucida Console">Lucida Console</ComboBoxItem>
             </ComboBox>
         </StackPanel>

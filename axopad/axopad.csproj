@@ -15,11 +15,14 @@
 
   <ItemGroup>
     <None Remove="add.png" />
+    <None Remove="Assets\compilers.txt" />
     <None Remove="Assets\CPP-Mode.xshd" />
     <None Remove="Assets\CSharp-Mode.xshd" />
     <None Remove="Assets\CSS-Mode.xshd" />
+    <None Remove="Assets\Fonts\FSEX300.ttf" />
     <None Remove="Assets\HTML-Mode.xshd" />
     <None Remove="Assets\Icons\exit.png" />
+    <None Remove="Assets\Icons\folder.png" />
     <None Remove="Assets\Icons\icon.ico" />
     <None Remove="Assets\Icons\icon.png" />
     <None Remove="Assets\Icons\minus.png" />
@@ -40,12 +43,17 @@
 
   <ItemGroup>
     <PackageReference Include="AvalonEdit" Version="6.0.1" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="3.1.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Fonts\FSEX300.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\Icons\exit.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Icons\folder.png" />
     <Resource Include="Assets\Icons\icon.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -61,37 +69,40 @@
     <Resource Include="Assets\Icons\text_file_icon.ico">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Content Include="Assets\Rust-Mode.xshd">
+    <Content Include="Assets\Highlighting\Rust-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\CPP-Mode.xshd">
+    <Content Include="Assets\Highlighting\CPP-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\CSharp-Mode.xshd">
+    <Content Include="Assets\Highlighting\CSharp-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\CSS-Mode.xshd">
+    <Content Include="Assets\Highlighting\CSS-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\HTML-Mode.xshd">
+    <Content Include="Assets\Highlighting\HTML-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\JavaScript-Mode.xshd">
+    <Content Include="Assets\Highlighting\JavaScript-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Json.xshd">
+    <Content Include="Assets\Highlighting\Json.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Python-Mode.xshd">
+    <Content Include="Assets\Highlighting\Python-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\settings.txt">
+    <Content Include="Assets\Data\compilers.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Data\settings.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Assets\Patch-Mode.xshd">
+    <Content Include="Assets\Highlighting\Patch-Mode.xshd">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

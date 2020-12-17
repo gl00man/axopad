@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -97,7 +98,7 @@ namespace axopad
 
         private string GetSettingsPath()
         {
-            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\settings.txt");
+            return System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("axopad.dll", @"Assets\Data\settings.txt");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

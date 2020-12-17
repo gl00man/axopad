@@ -6,6 +6,10 @@
              Startup="Application_Startup">
     <Application.Resources>
 
+        <Style x:Key="Fixedsys">
+            <Setter Property="TextElement.FontFamily" Value="Assets\Fonts\#Fixedsys Excelsior 3.01" />
+        </Style>
+
         <Style x:Key="CustomButton" TargetType="Button">
             <Setter Property="Background" Value="#282c34"/>
             <Setter Property="Foreground" Value="#6BA5F2"/>
@@ -73,14 +77,53 @@
             </Style.Triggers>
         </Style>
 
+        <Style x:Key="folderExplorerButton" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#FFFFFF"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" >
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#2B3038"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="CustomTreeView" TargetType="TreeView">
+            <Setter Property="Background" Value="#252930"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+
+        <Style TargetType="{x:Type TreeViewItem}">
+            <Setter Property="Foreground" Value="#6BA5F2"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
         <Style x:Key="CustomRichTextBox" TargetType="avalon:TextEditor">
             <Style.Resources>
                 <Style TargetType="ScrollBar">
                     <Setter Property="Background" Value="#343638" />
                     <Setter Property="BorderBrush" Value="#343638" />
                 </Style>
+                <Style TargetType="Line">
+                    <Setter Property="Margin" Value="10 0 0 0"/>
+                </Style>
+                <Style TargetType="avalon:LineNumberMargin">
+                    <Setter Property="Margin" Value="0 0 5 0"/>
+                </Style>
+                <Style TargetType="avalon:TextView">
+                    <Setter Property="Margin" Value="10 0 5 0"/>
+                </Style>
             </Style.Resources>
         </Style>
-
     </Application.Resources>
 </Application>
