@@ -75,7 +75,7 @@
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0 5 0 5">
                     <TextBlock Text="Tab Size:" Foreground="#6BA5F2" Margin="0 0 5 0"/>
                     <TextBlock x:Name="tabSizeTxt" Text="4" Foreground="#6BA5F2" Margin="0 0 50 0"/>
-                    <TextBlock x:Name="langTxt" Text="Notes" Foreground="#6BA5F2" Margin="0 0 30 0"/>
+                    <TextBlock x:Name="langTxt" Text="Plain Text" Foreground="#6BA5F2" Margin="0 0 30 0"/>
                 </StackPanel>
             </DockPanel>
         </Grid>

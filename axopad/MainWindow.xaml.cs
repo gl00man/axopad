@@ -565,9 +565,9 @@ namespace axopad
             }
             else
             {
-                ReadXshd(@"Assets\Highlighting\Patch-Mode.xshd");
+                ReadXshd(@"");
                 xshdLoaded = false;
-                lang = "Notes";
+                lang = "Plain Text";
                 langTxt.Text = lang;
                 compilerPath = "";
             }

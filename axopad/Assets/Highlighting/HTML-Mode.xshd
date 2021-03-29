@@ -9,13 +9,13 @@
 	<Color name="UnknownScriptTag" foreground="#9A62AD" exampleText="&lt;script la&gt;alert('Hello World!');&lt;/script&gt;" />
 	<Color name="HtmlTag" foreground="#645ec7" fontWeight="bold" exampleText="&lt;html&gt;Hello World!/html&gt;" />
 	<Color name="Tags" foreground="#3f7ac4" exampleText="&lt;html&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="Attributes" foreground="#ba6065" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="Attributes" foreground="#ba6065" fontWeight="normal" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="Slash" foreground="" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="Assignment" foreground="#ba6065" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="String" foreground="#689e42" exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="String" foreground="#689e42" fontWeight="normal"  exampleText="&lt;html background='green'&gt;Hello World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="EntityReference" foreground="#90b874" exampleText="&lt;html background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="Entities" foreground="#00dd3e" exampleText="&lt;html background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
-	<Color name="UnknownAttribute" foreground="#90b874" exampleText="&lt;html foo='bar' background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="Entities" foreground="#00dd3e" fontWeight="normal"  exampleText="&lt;html background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
+	<Color name="UnknownAttribute" foreground="#ba6065" fontWeight="normal"  exampleText="&lt;html foo='bar' background='green'&gt;Hello&amp;nbsp;World! &lt;test /&gt;&lt;/html&gt;" />
 	<Color name="Doctype" foreground="#645ec7" exampleText="!DOCTYPE" />
 	<Color name="TagValue" foreground="Black" exampleText="text inside" />
 	<RuleSet ignoreCase="true">
