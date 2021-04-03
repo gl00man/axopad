@@ -1,4 +1,2 @@
-.vs
-.git
-bin
-obj
+bin/
+obj/
