@@ -10,11 +10,13 @@
 <br />
 
 ## What is Axopad?
-It's easy, nice looking notepad for programming or just taking simple notes. <br />
+It's light, nice looking notepad for programming or just taking simple notes. <br />
 For this project I was using <a href="http://avalonedit.net/">Avalon Text Editor</a>.
 
-## Requirements
-All You need to run this app is ".NET Core 3.1 Runtime" installed.
+## Platforms and Requirements
+Axopad can be used only on Windows.
+
+To run axopad u have to install <a href="https://dotnet.microsoft.com/download/dotnet/3.1">.NET Core 3.1 Runtime</a>.
 
 ## Functions
 Axopad has all simple notepad functions like: reading & saving files, finding or replacing phrases in text, also syntax highlighting.
